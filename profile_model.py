@@ -8,6 +8,7 @@ from data import create_dataset
 from models import create_model
 from util.visualizer import Visualizer
 import torch
+import os
 
 def trace_handler(p):
     sort_by_keyword = "self_" + 'cuda' + "_time_total"
@@ -16,6 +17,9 @@ def trace_handler(p):
     p.export_chrome_trace("./traces/trace_" + str(p.step_num) + ".json")
 
 if __name__ == '__main__':
+
+    os.makedirs('./traces', exist_ok=True)
+
     opt = TrainOptions().parse()   # get training options
     dataset = create_dataset(opt)  # create a dataset given opt.dataset_mode and other options
     dataset_size = len(dataset)    # get the number of images in the dataset.
