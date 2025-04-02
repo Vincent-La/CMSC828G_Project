@@ -1,0 +1,6 @@
+python profile_model.py --dataroot /fs/nexus-scratch/vla/datasets/maps \
+                        --name maps_cyclegan \
+                        --model cycle_gan \
+                        --n_epochs 1 \
+                        --n_epochs_decay 0 \
+                        --no_html

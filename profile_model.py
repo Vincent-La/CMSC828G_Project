@@ -9,6 +9,12 @@ from models import create_model
 from util.visualizer import Visualizer
 import torch
 
+def trace_handler(p):
+    sort_by_keyword = "self_" + 'cuda' + "_time_total"
+    output = p.key_averages().table(sort_by=sort_by_keyword, row_limit=10)
+    print(output)
+    p.export_chrome_trace("./traces/trace_" + str(p.step_num) + ".json")
+
 if __name__ == '__main__':
     opt = TrainOptions().parse()   # get training options
     dataset = create_dataset(opt)  # create a dataset given opt.dataset_mode and other options
@@ -29,10 +35,10 @@ if __name__ == '__main__':
                 torch.profiler.ProfilerActivity.CPU,
                 torch.profiler.ProfilerActivity.CUDA,
             ],
-            schedule=torch.profiler.schedule(wait=0, warmup=0, active=6, repeat=1),
+            schedule=torch.profiler.schedule(wait=0, warmup=1, active=3, repeat=3),
             record_shapes=True,
             profile_memory=True,
-            with_stack=True,
+            with_stack=False,          # NOTE: set to True for memory profiling, TODO: currently setting to True causes a runtime error: https://github.com/pytorch/pytorch/pull/150102
             on_trace_ready=trace_handler,
     ) as prof:
 
@@ -70,6 +76,10 @@ if __name__ == '__main__':
                     model.save_networks(save_suffix)
 
                 iter_data_time = time.time()
+
+                # signal to profiler that next step has starteds
+                prof.step()
+
             if epoch % opt.save_epoch_freq == 0:              # cache our model every <save_epoch_freq> epochs
                 print('saving the model at the end of epoch %d, iters %d' % (epoch, total_iters))
                 model.save_networks('latest')
@@ -78,7 +88,8 @@ if __name__ == '__main__':
             print('End of epoch %d / %d \t Time Taken: %d sec' % (epoch, opt.n_epochs + opt.n_epochs_decay, time.time() - epoch_start_time))
     
     # Construct the memory timeline HTML plot.
-    prof.export_memory_timeline(f"timeline.html", device="cuda:0")
+    # prof.export_memory_timeline(f"timeline.html", device="cuda:0")
 
-    # metrics table    
-    print(prof.key_averages().table(sort_by="self_cuda_memory_usage", row_limit=10))
+    # metrics table 
+    print(prof.key_averages().table(sort_by="self_cuda_memory_usage"))
+
