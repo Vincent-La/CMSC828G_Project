@@ -7,7 +7,7 @@ from options.train_options import TrainOptions
 from data import create_dataset
 from models import create_model
 from util.visualizer import Visualizer
-from torch.profiler import profile, record_function, ProfilerActivity
+import torch
 
 if __name__ == '__main__':
     opt = TrainOptions().parse()   # get training options
@@ -78,7 +78,7 @@ if __name__ == '__main__':
             print('End of epoch %d / %d \t Time Taken: %d sec' % (epoch, opt.n_epochs + opt.n_epochs_decay, time.time() - epoch_start_time))
     
     # Construct the memory timeline HTML plot.
-    prof.export_memory_timeline(f"{file_prefix}.html", device="cuda:0")
+    prof.export_memory_timeline(f"timeline.html", device="cuda:0")
 
     # metrics table    
     print(prof.key_averages().table(sort_by="self_cuda_memory_usage", row_limit=10))
