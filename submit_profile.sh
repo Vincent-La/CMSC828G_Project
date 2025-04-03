@@ -1,6 +1,6 @@
 #!/bin/bash
 #SBATCH -J cyclegan_profile
-#SBATCH -t 30:00
+#SBATCH -t 15:00
 #SBATCH -N 1
 #SBATCH -p gpu
 #SBATCH --gpus=a100:1
