@@ -6,6 +6,9 @@
 
 Note: Zaratan `shell` space is not accesible by compute nodes so copy dataset over to `scratch` space before launching a job or make sure shared scratch space already exists 
 
+<!-- # Intel Extension for Pytorch for Kineto Profiling Support
++ See [installation](https://pytorch-extension.intel.com/installation?platform=gpu&version=v2.1.10%2Bxpu&os=linux%2Fwsl2&package=pip) -->
+
 
 ## profile.py
 Adapted `train.py` code to profile CycleGAN

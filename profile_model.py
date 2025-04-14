@@ -10,11 +10,11 @@ from util.visualizer import Visualizer
 import torch
 import os
 
-def trace_handler(p):
-    sort_by_keyword = "self_" + 'cuda' + "_time_total"
-    output = p.key_averages().table(sort_by=sort_by_keyword, row_limit=10)
-    print(output)
-    p.export_chrome_trace("./traces/trace_" + str(p.step_num) + ".json")
+# def trace_handler(p):
+#     sort_by_keyword = "self_" + 'cuda' + "_time_total"
+#     output = p.key_averages().table(sort_by=sort_by_keyword, row_limit=10)
+#     print(output)
+#     p.export_chrome_trace("./traces/trace_" + str(p.step_num) + ".json")
 
 if __name__ == '__main__':
 
@@ -33,17 +33,30 @@ if __name__ == '__main__':
 
    # Initialize the profiler context with record_shapes, profile_memory,
    # and with_stack set to True.
-   # NOTE: adapted from: https://pytorch.org/blog/understanding-gpu-memory-1/    
+   # NOTE: adapted from: https://pytorch.org/blog/understanding-gpu-memory-1/ and https://hta.readthedocs.io/en/latest/source/intro/trace_collection.html 
+    
+    schedule = torch.profiler.schedule(wait=5, warmup=5, active=20, repeat=3)
+    trace_handler = torch.profiler.tensorboard_trace_handler(dir_name = './traces', use_gzip=False)
+
+    # libkineto integration? https://github.com/pytorch/kineto/issues/973
+    # experimental_config = torch.profiler._ExperimentalConfig(
+    #                         profiler_metrics=[
+    #                             "kineto__tensor_core_insts",
+    #                             "dram__bytes_read.sum",
+    #                             "dram__bytes_write.sum"],
+    #                         profiler_measure_per_kernel=False),
+    
     with torch.profiler.profile(
             activities=[
                 torch.profiler.ProfilerActivity.CPU,
                 torch.profiler.ProfilerActivity.CUDA,
             ],
-            schedule=torch.profiler.schedule(wait=0, warmup=1, active=3, repeat=3),
+            schedule=schedule,
             record_shapes=True,
             profile_memory=True,
-            with_stack=False,          # NOTE: set to True for memory profiling, TODO: currently setting to True causes a runtime error: https://github.com/pytorch/pytorch/pull/150102
+            with_stack=True,          # NOTE: set to True for memory profiling, TODO: currently setting to True causes a runtime error: https://github.com/pytorch/pytorch/pull/150102
             on_trace_ready=trace_handler,
+            # experimental_config = experimental_config
     ) as prof:
 
         for epoch in range(opt.epoch_count, opt.n_epochs + opt.n_epochs_decay + 1):    # outer loop for different epochs; we save the model by <epoch_count>, <epoch_count>+<save_latest_freq>
@@ -92,7 +105,7 @@ if __name__ == '__main__':
             print('End of epoch %d / %d \t Time Taken: %d sec' % (epoch, opt.n_epochs + opt.n_epochs_decay, time.time() - epoch_start_time))
     
     # Construct the memory timeline HTML plot.
-    # prof.export_memory_timeline(f"timeline.html", device="cuda:0")
+    prof.export_memory_timeline(f"timeline.html", device="cuda:0")
 
     # metrics table 
     print(prof.key_averages().table(sort_by="self_cuda_memory_usage"))
