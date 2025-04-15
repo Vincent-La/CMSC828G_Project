@@ -1,0 +1,1030 @@
+Setting up a new session...
+Traceback (most recent call last):
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/urllib3/connection.py", line 198, in _new_conn
+    sock = connection.create_connection(
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/urllib3/util/connection.py", line 85, in create_connection
+    raise err
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/urllib3/util/connection.py", line 73, in create_connection
+    sock.connect(sa)
+ConnectionRefusedError: [Errno 111] Connection refused
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/urllib3/connectionpool.py", line 787, in urlopen
+    response = self._make_request(
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/urllib3/connectionpool.py", line 493, in _make_request
+    conn.request(
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/urllib3/connection.py", line 445, in request
+    self.endheaders()
+  File "/cvmfs/hpcsw.umd.edu/spack-software/2023.11.20/views/2023/linux-rhel8-zen2/gcc@11.3.0/python-3.10.10/._mpi-nocuda/qd63fn2w5jnqtlfannzt4ilfsbb2xx7q/linux-rhel8-zen2/gcc/11.3.0/lib/python3.10/http/client.py", line 1277, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "/cvmfs/hpcsw.umd.edu/spack-software/2023.11.20/views/2023/linux-rhel8-zen2/gcc@11.3.0/python-3.10.10/._mpi-nocuda/qd63fn2w5jnqtlfannzt4ilfsbb2xx7q/linux-rhel8-zen2/gcc/11.3.0/lib/python3.10/http/client.py", line 1037, in _send_output
+    self.send(msg)
+  File "/cvmfs/hpcsw.umd.edu/spack-software/2023.11.20/views/2023/linux-rhel8-zen2/gcc@11.3.0/python-3.10.10/._mpi-nocuda/qd63fn2w5jnqtlfannzt4ilfsbb2xx7q/linux-rhel8-zen2/gcc/11.3.0/lib/python3.10/http/client.py", line 975, in send
+    self.connect()
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/urllib3/connection.py", line 276, in connect
+    self.sock = self._new_conn()
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/urllib3/connection.py", line 213, in _new_conn
+    raise NewConnectionError(
+urllib3.exceptions.NewConnectionError: <urllib3.connection.HTTPConnection object at 0x1495a4ab7460>: Failed to establish a new connection: [Errno 111] Connection refused
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/requests/adapters.py", line 667, in send
+    resp = conn.urlopen(
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/urllib3/connectionpool.py", line 841, in urlopen
+    retries = retries.increment(
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/urllib3/util/retry.py", line 519, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+urllib3.exceptions.MaxRetryError: HTTPConnectionPool(host='localhost', port=8097): Max retries exceeded with url: /env/main (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x1495a4ab7460>: Failed to establish a new connection: [Errno 111] Connection refused'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/visdom/__init__.py", line 756, in _send
+    return self._handle_post(
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/visdom/__init__.py", line 720, in _handle_post
+    r = self.session.post(url, data=data)
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/requests/sessions.py", line 637, in post
+    return self.request("POST", url, data=data, json=json, **kwargs)
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/requests/sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/requests/sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/requests/adapters.py", line 700, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPConnectionPool(host='localhost', port=8097): Max retries exceeded with url: /env/main (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x1495a4ab7460>: Failed to establish a new connection: [Errno 111] Connection refused'))
+[Errno 111] Connection refused
+Visdom.setup_socket.<locals>.on_close() takes 1 positional argument but 3 were given
+/home/vla/.cycle_gan/lib/python3.10/site-packages/torch/optim/lr_scheduler.py:227: UserWarning: Detected call of `lr_scheduler.step()` before `optimizer.step()`. In PyTorch 1.1.0 and later, you should call them in the opposite order: `optimizer.step()` before `lr_scheduler.step()`.  Failure to do this will result in PyTorch skipping the first value of the learning rate schedule. See more details at https://pytorch.org/docs/stable/optim.html#how-to-adjust-learning-rate
+  warnings.warn(
+----------------- Options ---------------
+               batch_size: 1                             
+                    beta1: 0.5                           
+          checkpoints_dir: ./checkpoints                 
+           continue_train: False                         
+                crop_size: 256                           
+                 dataroot: /scratch/zt1/project/cmsc828/user/vla/datasets/maps	[default: None]
+             dataset_mode: unaligned                     
+                direction: AtoB                          
+              display_env: main                          
+             display_freq: 400                           
+               display_id: 1                             
+            display_ncols: 4                             
+             display_port: 8097                          
+           display_server: http://localhost              
+          display_winsize: 256                           
+                    epoch: latest                        
+              epoch_count: 1                             
+                 gan_mode: lsgan                         
+                  gpu_ids: 0                             
+                init_gain: 0.02                          
+                init_type: normal                        
+                 input_nc: 3                             
+                  isTrain: True                          	[default: None]
+                 lambda_A: 10.0                          
+                 lambda_B: 10.0                          
+          lambda_identity: 0.5                           
+                load_iter: 0                             	[default: 0]
+                load_size: 286                           
+                       lr: 0.0002                        
+           lr_decay_iters: 50                            
+                lr_policy: linear                        
+         max_dataset_size: inf                           
+                    model: cycle_gan                     
+                 n_epochs: 1                             	[default: 100]
+           n_epochs_decay: 0                             	[default: 100]
+               n_layers_D: 3                             
+                     name: maps_cyclegan                 	[default: experiment_name]
+                      ndf: 64                            
+                     netD: basic                         
+                     netG: resnet_9blocks                
+                      ngf: 64                            
+               no_dropout: True                          
+                  no_flip: False                         
+                  no_html: True                          	[default: False]
+                     norm: instance                      
+              num_threads: 4                             
+                output_nc: 3                             
+                    phase: train                         
+                pool_size: 50                            
+               preprocess: resize_and_crop               
+               print_freq: 100                           
+             save_by_iter: False                         
+          save_epoch_freq: 5                             
+         save_latest_freq: 5000                          
+           serial_batches: False                         
+                   suffix:                               
+         update_html_freq: 1000                          
+                use_wandb: False                         
+                  verbose: False                         
+       wandb_project_name: CycleGAN-and-pix2pix          
+----------------- End -------------------
+dataset [UnalignedDataset] was created
+The number of training images = 1096
+initialize network with normal
+initialize network with normal
+initialize network with normal
+initialize network with normal
+model [CycleGANModel] was created
+---------- Networks initialized -------------
+[Network G_A] Total number of parameters : 11.378 M
+[Network G_B] Total number of parameters : 11.378 M
+[Network D_A] Total number of parameters : 2.765 M
+[Network D_B] Total number of parameters : 2.765 M
+-----------------------------------------------
+Exception in user code:
+------------------------------------------------------------
+
+
+Could not connect to Visdom server. 
+ Trying to start a server....
+Command: /home/vla/.cycle_gan/bin/python -m visdom.server -p 8097 &>/dev/null &
+learning rate 0.0002000 -> 0.0000000
+Traceback (most recent call last):
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/urllib3/connection.py", line 198, in _new_conn
+    sock = connection.create_connection(
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/urllib3/util/connection.py", line 85, in create_connection
+    raise err
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/urllib3/util/connection.py", line 73, in create_connection
+    sock.connect(sa)
+ConnectionRefusedError: [Errno 111] Connection refused
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/urllib3/connectionpool.py", line 787, in urlopen
+    response = self._make_request(
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/urllib3/connectionpool.py", line 493, in _make_request
+    conn.request(
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/urllib3/connection.py", line 445, in request
+    self.endheaders()
+  File "/cvmfs/hpcsw.umd.edu/spack-software/2023.11.20/views/2023/linux-rhel8-zen2/gcc@11.3.0/python-3.10.10/._mpi-nocuda/qd63fn2w5jnqtlfannzt4ilfsbb2xx7q/linux-rhel8-zen2/gcc/11.3.0/lib/python3.10/http/client.py", line 1277, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "/cvmfs/hpcsw.umd.edu/spack-software/2023.11.20/views/2023/linux-rhel8-zen2/gcc@11.3.0/python-3.10.10/._mpi-nocuda/qd63fn2w5jnqtlfannzt4ilfsbb2xx7q/linux-rhel8-zen2/gcc/11.3.0/lib/python3.10/http/client.py", line 1037, in _send_output
+    self.send(msg)
+  File "/cvmfs/hpcsw.umd.edu/spack-software/2023.11.20/views/2023/linux-rhel8-zen2/gcc@11.3.0/python-3.10.10/._mpi-nocuda/qd63fn2w5jnqtlfannzt4ilfsbb2xx7q/linux-rhel8-zen2/gcc/11.3.0/lib/python3.10/http/client.py", line 975, in send
+    self.connect()
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/urllib3/connection.py", line 276, in connect
+    self.sock = self._new_conn()
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/urllib3/connection.py", line 213, in _new_conn
+    raise NewConnectionError(
+urllib3.exceptions.NewConnectionError: <urllib3.connection.HTTPConnection object at 0x1495b8f6f9d0>: Failed to establish a new connection: [Errno 111] Connection refused
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/requests/adapters.py", line 667, in send
+    resp = conn.urlopen(
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/urllib3/connectionpool.py", line 841, in urlopen
+    retries = retries.increment(
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/urllib3/util/retry.py", line 519, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+urllib3.exceptions.MaxRetryError: HTTPConnectionPool(host='localhost', port=8097): Max retries exceeded with url: /events (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x1495b8f6f9d0>: Failed to establish a new connection: [Errno 111] Connection refused'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/visdom/__init__.py", line 756, in _send
+    return self._handle_post(
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/visdom/__init__.py", line 720, in _handle_post
+    r = self.session.post(url, data=data)
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/requests/sessions.py", line 637, in post
+    return self.request("POST", url, data=data, json=json, **kwargs)
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/requests/sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/requests/sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/requests/adapters.py", line 700, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPConnectionPool(host='localhost', port=8097): Max retries exceeded with url: /events (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x1495b8f6f9d0>: Failed to establish a new connection: [Errno 111] Connection refused'))
+Traceback (most recent call last):
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/urllib3/connection.py", line 198, in _new_conn
+    sock = connection.create_connection(
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/urllib3/util/connection.py", line 85, in create_connection
+    raise err
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/urllib3/util/connection.py", line 73, in create_connection
+    sock.connect(sa)
+ConnectionRefusedError: [Errno 111] Connection refused
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/urllib3/connectionpool.py", line 787, in urlopen
+    response = self._make_request(
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/urllib3/connectionpool.py", line 493, in _make_request
+    conn.request(
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/urllib3/connection.py", line 445, in request
+    self.endheaders()
+  File "/cvmfs/hpcsw.umd.edu/spack-software/2023.11.20/views/2023/linux-rhel8-zen2/gcc@11.3.0/python-3.10.10/._mpi-nocuda/qd63fn2w5jnqtlfannzt4ilfsbb2xx7q/linux-rhel8-zen2/gcc/11.3.0/lib/python3.10/http/client.py", line 1277, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "/cvmfs/hpcsw.umd.edu/spack-software/2023.11.20/views/2023/linux-rhel8-zen2/gcc@11.3.0/python-3.10.10/._mpi-nocuda/qd63fn2w5jnqtlfannzt4ilfsbb2xx7q/linux-rhel8-zen2/gcc/11.3.0/lib/python3.10/http/client.py", line 1037, in _send_output
+    self.send(msg)
+  File "/cvmfs/hpcsw.umd.edu/spack-software/2023.11.20/views/2023/linux-rhel8-zen2/gcc@11.3.0/python-3.10.10/._mpi-nocuda/qd63fn2w5jnqtlfannzt4ilfsbb2xx7q/linux-rhel8-zen2/gcc/11.3.0/lib/python3.10/http/client.py", line 975, in send
+    self.connect()
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/urllib3/connection.py", line 276, in connect
+    self.sock = self._new_conn()
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/urllib3/connection.py", line 213, in _new_conn
+    raise NewConnectionError(
+urllib3.exceptions.NewConnectionError: <urllib3.connection.HTTPConnection object at 0x1495b8f606a0>: Failed to establish a new connection: [Errno 111] Connection refused
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/requests/adapters.py", line 667, in send
+    resp = conn.urlopen(
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/urllib3/connectionpool.py", line 841, in urlopen
+    retries = retries.increment(
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/urllib3/util/retry.py", line 519, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+urllib3.exceptions.MaxRetryError: HTTPConnectionPool(host='localhost', port=8097): Max retries exceeded with url: /events (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x1495b8f606a0>: Failed to establish a new connection: [Errno 111] Connection refused'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/visdom/__init__.py", line 756, in _send
+    return self._handle_post(
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/visdom/__init__.py", line 720, in _handle_post
+    r = self.session.post(url, data=data)
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/requests/sessions.py", line 637, in post
+    return self.request("POST", url, data=data, json=json, **kwargs)
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/requests/sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/requests/sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/requests/adapters.py", line 700, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPConnectionPool(host='localhost', port=8097): Max retries exceeded with url: /events (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x1495b8f606a0>: Failed to establish a new connection: [Errno 111] Connection refused'))
+Traceback (most recent call last):
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/urllib3/connection.py", line 198, in _new_conn
+    sock = connection.create_connection(
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/urllib3/util/connection.py", line 85, in create_connection
+    raise err
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/urllib3/util/connection.py", line 73, in create_connection
+    sock.connect(sa)
+ConnectionRefusedError: [Errno 111] Connection refused
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/urllib3/connectionpool.py", line 787, in urlopen
+    response = self._make_request(
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/urllib3/connectionpool.py", line 493, in _make_request
+    conn.request(
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/urllib3/connection.py", line 445, in request
+    self.endheaders()
+  File "/cvmfs/hpcsw.umd.edu/spack-software/2023.11.20/views/2023/linux-rhel8-zen2/gcc@11.3.0/python-3.10.10/._mpi-nocuda/qd63fn2w5jnqtlfannzt4ilfsbb2xx7q/linux-rhel8-zen2/gcc/11.3.0/lib/python3.10/http/client.py", line 1277, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "/cvmfs/hpcsw.umd.edu/spack-software/2023.11.20/views/2023/linux-rhel8-zen2/gcc@11.3.0/python-3.10.10/._mpi-nocuda/qd63fn2w5jnqtlfannzt4ilfsbb2xx7q/linux-rhel8-zen2/gcc/11.3.0/lib/python3.10/http/client.py", line 1037, in _send_output
+    self.send(msg)
+  File "/cvmfs/hpcsw.umd.edu/spack-software/2023.11.20/views/2023/linux-rhel8-zen2/gcc@11.3.0/python-3.10.10/._mpi-nocuda/qd63fn2w5jnqtlfannzt4ilfsbb2xx7q/linux-rhel8-zen2/gcc/11.3.0/lib/python3.10/http/client.py", line 975, in send
+    self.connect()
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/urllib3/connection.py", line 276, in connect
+    self.sock = self._new_conn()
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/urllib3/connection.py", line 213, in _new_conn
+    raise NewConnectionError(
+urllib3.exceptions.NewConnectionError: <urllib3.connection.HTTPConnection object at 0x1495b8f7ca30>: Failed to establish a new connection: [Errno 111] Connection refused
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/requests/adapters.py", line 667, in send
+    resp = conn.urlopen(
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/urllib3/connectionpool.py", line 841, in urlopen
+    retries = retries.increment(
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/urllib3/util/retry.py", line 519, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+urllib3.exceptions.MaxRetryError: HTTPConnectionPool(host='localhost', port=8097): Max retries exceeded with url: /events (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x1495b8f7ca30>: Failed to establish a new connection: [Errno 111] Connection refused'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/visdom/__init__.py", line 756, in _send
+    return self._handle_post(
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/visdom/__init__.py", line 720, in _handle_post
+    r = self.session.post(url, data=data)
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/requests/sessions.py", line 637, in post
+    return self.request("POST", url, data=data, json=json, **kwargs)
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/requests/sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/requests/sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/requests/adapters.py", line 700, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPConnectionPool(host='localhost', port=8097): Max retries exceeded with url: /events (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x1495b8f7ca30>: Failed to establish a new connection: [Errno 111] Connection refused'))
+Traceback (most recent call last):
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/urllib3/connection.py", line 198, in _new_conn
+    sock = connection.create_connection(
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/urllib3/util/connection.py", line 85, in create_connection
+    raise err
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/urllib3/util/connection.py", line 73, in create_connection
+    sock.connect(sa)
+ConnectionRefusedError: [Errno 111] Connection refused
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/urllib3/connectionpool.py", line 787, in urlopen
+    response = self._make_request(
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/urllib3/connectionpool.py", line 493, in _make_request
+    conn.request(
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/urllib3/connection.py", line 445, in request
+    self.endheaders()
+  File "/cvmfs/hpcsw.umd.edu/spack-software/2023.11.20/views/2023/linux-rhel8-zen2/gcc@11.3.0/python-3.10.10/._mpi-nocuda/qd63fn2w5jnqtlfannzt4ilfsbb2xx7q/linux-rhel8-zen2/gcc/11.3.0/lib/python3.10/http/client.py", line 1277, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "/cvmfs/hpcsw.umd.edu/spack-software/2023.11.20/views/2023/linux-rhel8-zen2/gcc@11.3.0/python-3.10.10/._mpi-nocuda/qd63fn2w5jnqtlfannzt4ilfsbb2xx7q/linux-rhel8-zen2/gcc/11.3.0/lib/python3.10/http/client.py", line 1037, in _send_output
+    self.send(msg)
+  File "/cvmfs/hpcsw.umd.edu/spack-software/2023.11.20/views/2023/linux-rhel8-zen2/gcc@11.3.0/python-3.10.10/._mpi-nocuda/qd63fn2w5jnqtlfannzt4ilfsbb2xx7q/linux-rhel8-zen2/gcc/11.3.0/lib/python3.10/http/client.py", line 975, in send
+    self.connect()
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/urllib3/connection.py", line 276, in connect
+    self.sock = self._new_conn()
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/urllib3/connection.py", line 213, in _new_conn
+    raise NewConnectionError(
+urllib3.exceptions.NewConnectionError: <urllib3.connection.HTTPConnection object at 0x1495b8ff4dc0>: Failed to establish a new connection: [Errno 111] Connection refused
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/requests/adapters.py", line 667, in send
+    resp = conn.urlopen(
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/urllib3/connectionpool.py", line 841, in urlopen
+    retries = retries.increment(
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/urllib3/util/retry.py", line 519, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+urllib3.exceptions.MaxRetryError: HTTPConnectionPool(host='localhost', port=8097): Max retries exceeded with url: /events (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x1495b8ff4dc0>: Failed to establish a new connection: [Errno 111] Connection refused'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/visdom/__init__.py", line 756, in _send
+    return self._handle_post(
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/visdom/__init__.py", line 720, in _handle_post
+    r = self.session.post(url, data=data)
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/requests/sessions.py", line 637, in post
+    return self.request("POST", url, data=data, json=json, **kwargs)
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/requests/sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/requests/sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/requests/adapters.py", line 700, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPConnectionPool(host='localhost', port=8097): Max retries exceeded with url: /events (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x1495b8ff4dc0>: Failed to establish a new connection: [Errno 111] Connection refused'))
+Traceback (most recent call last):
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/urllib3/connection.py", line 198, in _new_conn
+    sock = connection.create_connection(
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/urllib3/util/connection.py", line 85, in create_connection
+    raise err
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/urllib3/util/connection.py", line 73, in create_connection
+    sock.connect(sa)
+ConnectionRefusedError: [Errno 111] Connection refused
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/urllib3/connectionpool.py", line 787, in urlopen
+    response = self._make_request(
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/urllib3/connectionpool.py", line 493, in _make_request
+    conn.request(
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/urllib3/connection.py", line 445, in request
+    self.endheaders()
+  File "/cvmfs/hpcsw.umd.edu/spack-software/2023.11.20/views/2023/linux-rhel8-zen2/gcc@11.3.0/python-3.10.10/._mpi-nocuda/qd63fn2w5jnqtlfannzt4ilfsbb2xx7q/linux-rhel8-zen2/gcc/11.3.0/lib/python3.10/http/client.py", line 1277, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "/cvmfs/hpcsw.umd.edu/spack-software/2023.11.20/views/2023/linux-rhel8-zen2/gcc@11.3.0/python-3.10.10/._mpi-nocuda/qd63fn2w5jnqtlfannzt4ilfsbb2xx7q/linux-rhel8-zen2/gcc/11.3.0/lib/python3.10/http/client.py", line 1037, in _send_output
+    self.send(msg)
+  File "/cvmfs/hpcsw.umd.edu/spack-software/2023.11.20/views/2023/linux-rhel8-zen2/gcc@11.3.0/python-3.10.10/._mpi-nocuda/qd63fn2w5jnqtlfannzt4ilfsbb2xx7q/linux-rhel8-zen2/gcc/11.3.0/lib/python3.10/http/client.py", line 975, in send
+    self.connect()
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/urllib3/connection.py", line 276, in connect
+    self.sock = self._new_conn()
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/urllib3/connection.py", line 213, in _new_conn
+    raise NewConnectionError(
+urllib3.exceptions.NewConnectionError: <urllib3.connection.HTTPConnection object at 0x1495b8ff4fd0>: Failed to establish a new connection: [Errno 111] Connection refused
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/requests/adapters.py", line 667, in send
+    resp = conn.urlopen(
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/urllib3/connectionpool.py", line 841, in urlopen
+    retries = retries.increment(
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/urllib3/util/retry.py", line 519, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+urllib3.exceptions.MaxRetryError: HTTPConnectionPool(host='localhost', port=8097): Max retries exceeded with url: /events (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x1495b8ff4fd0>: Failed to establish a new connection: [Errno 111] Connection refused'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/visdom/__init__.py", line 756, in _send
+    return self._handle_post(
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/visdom/__init__.py", line 720, in _handle_post
+    r = self.session.post(url, data=data)
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/requests/sessions.py", line 637, in post
+    return self.request("POST", url, data=data, json=json, **kwargs)
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/requests/sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/requests/sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/requests/adapters.py", line 700, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPConnectionPool(host='localhost', port=8097): Max retries exceeded with url: /events (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x1495b8ff4fd0>: Failed to establish a new connection: [Errno 111] Connection refused'))
+Traceback (most recent call last):
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/urllib3/connection.py", line 198, in _new_conn
+    sock = connection.create_connection(
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/urllib3/util/connection.py", line 85, in create_connection
+    raise err
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/urllib3/util/connection.py", line 73, in create_connection
+    sock.connect(sa)
+ConnectionRefusedError: [Errno 111] Connection refused
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/urllib3/connectionpool.py", line 787, in urlopen
+    response = self._make_request(
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/urllib3/connectionpool.py", line 493, in _make_request
+    conn.request(
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/urllib3/connection.py", line 445, in request
+    self.endheaders()
+  File "/cvmfs/hpcsw.umd.edu/spack-software/2023.11.20/views/2023/linux-rhel8-zen2/gcc@11.3.0/python-3.10.10/._mpi-nocuda/qd63fn2w5jnqtlfannzt4ilfsbb2xx7q/linux-rhel8-zen2/gcc/11.3.0/lib/python3.10/http/client.py", line 1277, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "/cvmfs/hpcsw.umd.edu/spack-software/2023.11.20/views/2023/linux-rhel8-zen2/gcc@11.3.0/python-3.10.10/._mpi-nocuda/qd63fn2w5jnqtlfannzt4ilfsbb2xx7q/linux-rhel8-zen2/gcc/11.3.0/lib/python3.10/http/client.py", line 1037, in _send_output
+    self.send(msg)
+  File "/cvmfs/hpcsw.umd.edu/spack-software/2023.11.20/views/2023/linux-rhel8-zen2/gcc@11.3.0/python-3.10.10/._mpi-nocuda/qd63fn2w5jnqtlfannzt4ilfsbb2xx7q/linux-rhel8-zen2/gcc/11.3.0/lib/python3.10/http/client.py", line 975, in send
+    self.connect()
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/urllib3/connection.py", line 276, in connect
+    self.sock = self._new_conn()
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/urllib3/connection.py", line 213, in _new_conn
+    raise NewConnectionError(
+urllib3.exceptions.NewConnectionError: <urllib3.connection.HTTPConnection object at 0x1495b8ff5240>: Failed to establish a new connection: [Errno 111] Connection refused
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/requests/adapters.py", line 667, in send
+    resp = conn.urlopen(
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/urllib3/connectionpool.py", line 841, in urlopen
+    retries = retries.increment(
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/urllib3/util/retry.py", line 519, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+urllib3.exceptions.MaxRetryError: HTTPConnectionPool(host='localhost', port=8097): Max retries exceeded with url: /events (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x1495b8ff5240>: Failed to establish a new connection: [Errno 111] Connection refused'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/visdom/__init__.py", line 756, in _send
+    return self._handle_post(
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/visdom/__init__.py", line 720, in _handle_post
+    r = self.session.post(url, data=data)
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/requests/sessions.py", line 637, in post
+    return self.request("POST", url, data=data, json=json, **kwargs)
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/requests/sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/requests/sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/requests/adapters.py", line 700, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPConnectionPool(host='localhost', port=8097): Max retries exceeded with url: /events (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x1495b8ff5240>: Failed to establish a new connection: [Errno 111] Connection refused'))
+Traceback (most recent call last):
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/urllib3/connection.py", line 198, in _new_conn
+    sock = connection.create_connection(
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/urllib3/util/connection.py", line 85, in create_connection
+    raise err
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/urllib3/util/connection.py", line 73, in create_connection
+    sock.connect(sa)
+ConnectionRefusedError: [Errno 111] Connection refused
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/urllib3/connectionpool.py", line 787, in urlopen
+    response = self._make_request(
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/urllib3/connectionpool.py", line 493, in _make_request
+    conn.request(
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/urllib3/connection.py", line 445, in request
+    self.endheaders()
+  File "/cvmfs/hpcsw.umd.edu/spack-software/2023.11.20/views/2023/linux-rhel8-zen2/gcc@11.3.0/python-3.10.10/._mpi-nocuda/qd63fn2w5jnqtlfannzt4ilfsbb2xx7q/linux-rhel8-zen2/gcc/11.3.0/lib/python3.10/http/client.py", line 1277, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "/cvmfs/hpcsw.umd.edu/spack-software/2023.11.20/views/2023/linux-rhel8-zen2/gcc@11.3.0/python-3.10.10/._mpi-nocuda/qd63fn2w5jnqtlfannzt4ilfsbb2xx7q/linux-rhel8-zen2/gcc/11.3.0/lib/python3.10/http/client.py", line 1037, in _send_output
+    self.send(msg)
+  File "/cvmfs/hpcsw.umd.edu/spack-software/2023.11.20/views/2023/linux-rhel8-zen2/gcc@11.3.0/python-3.10.10/._mpi-nocuda/qd63fn2w5jnqtlfannzt4ilfsbb2xx7q/linux-rhel8-zen2/gcc/11.3.0/lib/python3.10/http/client.py", line 975, in send
+    self.connect()
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/urllib3/connection.py", line 276, in connect
+    self.sock = self._new_conn()
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/urllib3/connection.py", line 213, in _new_conn
+    raise NewConnectionError(
+urllib3.exceptions.NewConnectionError: <urllib3.connection.HTTPConnection object at 0x1495bdfb4250>: Failed to establish a new connection: [Errno 111] Connection refused
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/requests/adapters.py", line 667, in send
+    resp = conn.urlopen(
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/urllib3/connectionpool.py", line 841, in urlopen
+    retries = retries.increment(
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/urllib3/util/retry.py", line 519, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+urllib3.exceptions.MaxRetryError: HTTPConnectionPool(host='localhost', port=8097): Max retries exceeded with url: /events (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x1495bdfb4250>: Failed to establish a new connection: [Errno 111] Connection refused'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/visdom/__init__.py", line 756, in _send
+    return self._handle_post(
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/visdom/__init__.py", line 720, in _handle_post
+    r = self.session.post(url, data=data)
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/requests/sessions.py", line 637, in post
+    return self.request("POST", url, data=data, json=json, **kwargs)
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/requests/sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/requests/sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/requests/adapters.py", line 700, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPConnectionPool(host='localhost', port=8097): Max retries exceeded with url: /events (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x1495bdfb4250>: Failed to establish a new connection: [Errno 111] Connection refused'))
+Traceback (most recent call last):
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/urllib3/connection.py", line 198, in _new_conn
+    sock = connection.create_connection(
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/urllib3/util/connection.py", line 85, in create_connection
+    raise err
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/urllib3/util/connection.py", line 73, in create_connection
+    sock.connect(sa)
+ConnectionRefusedError: [Errno 111] Connection refused
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/urllib3/connectionpool.py", line 787, in urlopen
+    response = self._make_request(
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/urllib3/connectionpool.py", line 493, in _make_request
+    conn.request(
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/urllib3/connection.py", line 445, in request
+    self.endheaders()
+  File "/cvmfs/hpcsw.umd.edu/spack-software/2023.11.20/views/2023/linux-rhel8-zen2/gcc@11.3.0/python-3.10.10/._mpi-nocuda/qd63fn2w5jnqtlfannzt4ilfsbb2xx7q/linux-rhel8-zen2/gcc/11.3.0/lib/python3.10/http/client.py", line 1277, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "/cvmfs/hpcsw.umd.edu/spack-software/2023.11.20/views/2023/linux-rhel8-zen2/gcc@11.3.0/python-3.10.10/._mpi-nocuda/qd63fn2w5jnqtlfannzt4ilfsbb2xx7q/linux-rhel8-zen2/gcc/11.3.0/lib/python3.10/http/client.py", line 1037, in _send_output
+    self.send(msg)
+  File "/cvmfs/hpcsw.umd.edu/spack-software/2023.11.20/views/2023/linux-rhel8-zen2/gcc@11.3.0/python-3.10.10/._mpi-nocuda/qd63fn2w5jnqtlfannzt4ilfsbb2xx7q/linux-rhel8-zen2/gcc/11.3.0/lib/python3.10/http/client.py", line 975, in send
+    self.connect()
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/urllib3/connection.py", line 276, in connect
+    self.sock = self._new_conn()
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/urllib3/connection.py", line 213, in _new_conn
+    raise NewConnectionError(
+urllib3.exceptions.NewConnectionError: <urllib3.connection.HTTPConnection object at 0x1495b8ff7790>: Failed to establish a new connection: [Errno 111] Connection refused
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/requests/adapters.py", line 667, in send
+    resp = conn.urlopen(
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/urllib3/connectionpool.py", line 841, in urlopen
+    retries = retries.increment(
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/urllib3/util/retry.py", line 519, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+urllib3.exceptions.MaxRetryError: HTTPConnectionPool(host='localhost', port=8097): Max retries exceeded with url: /events (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x1495b8ff7790>: Failed to establish a new connection: [Errno 111] Connection refused'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/visdom/__init__.py", line 756, in _send
+    return self._handle_post(
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/visdom/__init__.py", line 720, in _handle_post
+    r = self.session.post(url, data=data)
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/requests/sessions.py", line 637, in post
+    return self.request("POST", url, data=data, json=json, **kwargs)
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/requests/sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/requests/sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/requests/adapters.py", line 700, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPConnectionPool(host='localhost', port=8097): Max retries exceeded with url: /events (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x1495b8ff7790>: Failed to establish a new connection: [Errno 111] Connection refused'))
+Traceback (most recent call last):
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/urllib3/connection.py", line 198, in _new_conn
+    sock = connection.create_connection(
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/urllib3/util/connection.py", line 85, in create_connection
+    raise err
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/urllib3/util/connection.py", line 73, in create_connection
+    sock.connect(sa)
+ConnectionRefusedError: [Errno 111] Connection refused
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/urllib3/connectionpool.py", line 787, in urlopen
+    response = self._make_request(
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/urllib3/connectionpool.py", line 493, in _make_request
+    conn.request(
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/urllib3/connection.py", line 445, in request
+    self.endheaders()
+  File "/cvmfs/hpcsw.umd.edu/spack-software/2023.11.20/views/2023/linux-rhel8-zen2/gcc@11.3.0/python-3.10.10/._mpi-nocuda/qd63fn2w5jnqtlfannzt4ilfsbb2xx7q/linux-rhel8-zen2/gcc/11.3.0/lib/python3.10/http/client.py", line 1277, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "/cvmfs/hpcsw.umd.edu/spack-software/2023.11.20/views/2023/linux-rhel8-zen2/gcc@11.3.0/python-3.10.10/._mpi-nocuda/qd63fn2w5jnqtlfannzt4ilfsbb2xx7q/linux-rhel8-zen2/gcc/11.3.0/lib/python3.10/http/client.py", line 1037, in _send_output
+    self.send(msg)
+  File "/cvmfs/hpcsw.umd.edu/spack-software/2023.11.20/views/2023/linux-rhel8-zen2/gcc@11.3.0/python-3.10.10/._mpi-nocuda/qd63fn2w5jnqtlfannzt4ilfsbb2xx7q/linux-rhel8-zen2/gcc/11.3.0/lib/python3.10/http/client.py", line 975, in send
+    self.connect()
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/urllib3/connection.py", line 276, in connect
+    self.sock = self._new_conn()
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/urllib3/connection.py", line 213, in _new_conn
+    raise NewConnectionError(
+urllib3.exceptions.NewConnectionError: <urllib3.connection.HTTPConnection object at 0x1495b8f6e440>: Failed to establish a new connection: [Errno 111] Connection refused
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/requests/adapters.py", line 667, in send
+    resp = conn.urlopen(
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/urllib3/connectionpool.py", line 841, in urlopen
+    retries = retries.increment(
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/urllib3/util/retry.py", line 519, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+urllib3.exceptions.MaxRetryError: HTTPConnectionPool(host='localhost', port=8097): Max retries exceeded with url: /events (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x1495b8f6e440>: Failed to establish a new connection: [Errno 111] Connection refused'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/visdom/__init__.py", line 756, in _send
+    return self._handle_post(
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/visdom/__init__.py", line 720, in _handle_post
+    r = self.session.post(url, data=data)
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/requests/sessions.py", line 637, in post
+    return self.request("POST", url, data=data, json=json, **kwargs)
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/requests/sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/requests/sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/requests/adapters.py", line 700, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPConnectionPool(host='localhost', port=8097): Max retries exceeded with url: /events (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x1495b8f6e440>: Failed to establish a new connection: [Errno 111] Connection refused'))
+Traceback (most recent call last):
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/urllib3/connection.py", line 198, in _new_conn
+    sock = connection.create_connection(
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/urllib3/util/connection.py", line 85, in create_connection
+    raise err
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/urllib3/util/connection.py", line 73, in create_connection
+    sock.connect(sa)
+ConnectionRefusedError: [Errno 111] Connection refused
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/urllib3/connectionpool.py", line 787, in urlopen
+    response = self._make_request(
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/urllib3/connectionpool.py", line 493, in _make_request
+    conn.request(
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/urllib3/connection.py", line 445, in request
+    self.endheaders()
+  File "/cvmfs/hpcsw.umd.edu/spack-software/2023.11.20/views/2023/linux-rhel8-zen2/gcc@11.3.0/python-3.10.10/._mpi-nocuda/qd63fn2w5jnqtlfannzt4ilfsbb2xx7q/linux-rhel8-zen2/gcc/11.3.0/lib/python3.10/http/client.py", line 1277, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "/cvmfs/hpcsw.umd.edu/spack-software/2023.11.20/views/2023/linux-rhel8-zen2/gcc@11.3.0/python-3.10.10/._mpi-nocuda/qd63fn2w5jnqtlfannzt4ilfsbb2xx7q/linux-rhel8-zen2/gcc/11.3.0/lib/python3.10/http/client.py", line 1037, in _send_output
+    self.send(msg)
+  File "/cvmfs/hpcsw.umd.edu/spack-software/2023.11.20/views/2023/linux-rhel8-zen2/gcc@11.3.0/python-3.10.10/._mpi-nocuda/qd63fn2w5jnqtlfannzt4ilfsbb2xx7q/linux-rhel8-zen2/gcc/11.3.0/lib/python3.10/http/client.py", line 975, in send
+    self.connect()
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/urllib3/connection.py", line 276, in connect
+    self.sock = self._new_conn()
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/urllib3/connection.py", line 213, in _new_conn
+    raise NewConnectionError(
+urllib3.exceptions.NewConnectionError: <urllib3.connection.HTTPConnection object at 0x1495b8f6faf0>: Failed to establish a new connection: [Errno 111] Connection refused
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/requests/adapters.py", line 667, in send
+    resp = conn.urlopen(
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/urllib3/connectionpool.py", line 841, in urlopen
+    retries = retries.increment(
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/urllib3/util/retry.py", line 519, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+urllib3.exceptions.MaxRetryError: HTTPConnectionPool(host='localhost', port=8097): Max retries exceeded with url: /events (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x1495b8f6faf0>: Failed to establish a new connection: [Errno 111] Connection refused'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/visdom/__init__.py", line 756, in _send
+    return self._handle_post(
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/visdom/__init__.py", line 720, in _handle_post
+    r = self.session.post(url, data=data)
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/requests/sessions.py", line 637, in post
+    return self.request("POST", url, data=data, json=json, **kwargs)
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/requests/sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/requests/sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/requests/adapters.py", line 700, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPConnectionPool(host='localhost', port=8097): Max retries exceeded with url: /events (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x1495b8f6faf0>: Failed to establish a new connection: [Errno 111] Connection refused'))
+Traceback (most recent call last):
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/urllib3/connection.py", line 198, in _new_conn
+    sock = connection.create_connection(
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/urllib3/util/connection.py", line 85, in create_connection
+    raise err
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/urllib3/util/connection.py", line 73, in create_connection
+    sock.connect(sa)
+ConnectionRefusedError: [Errno 111] Connection refused
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/urllib3/connectionpool.py", line 787, in urlopen
+    response = self._make_request(
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/urllib3/connectionpool.py", line 493, in _make_request
+    conn.request(
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/urllib3/connection.py", line 445, in request
+    self.endheaders()
+  File "/cvmfs/hpcsw.umd.edu/spack-software/2023.11.20/views/2023/linux-rhel8-zen2/gcc@11.3.0/python-3.10.10/._mpi-nocuda/qd63fn2w5jnqtlfannzt4ilfsbb2xx7q/linux-rhel8-zen2/gcc/11.3.0/lib/python3.10/http/client.py", line 1277, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "/cvmfs/hpcsw.umd.edu/spack-software/2023.11.20/views/2023/linux-rhel8-zen2/gcc@11.3.0/python-3.10.10/._mpi-nocuda/qd63fn2w5jnqtlfannzt4ilfsbb2xx7q/linux-rhel8-zen2/gcc/11.3.0/lib/python3.10/http/client.py", line 1037, in _send_output
+    self.send(msg)
+  File "/cvmfs/hpcsw.umd.edu/spack-software/2023.11.20/views/2023/linux-rhel8-zen2/gcc@11.3.0/python-3.10.10/._mpi-nocuda/qd63fn2w5jnqtlfannzt4ilfsbb2xx7q/linux-rhel8-zen2/gcc/11.3.0/lib/python3.10/http/client.py", line 975, in send
+    self.connect()
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/urllib3/connection.py", line 276, in connect
+    self.sock = self._new_conn()
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/urllib3/connection.py", line 213, in _new_conn
+    raise NewConnectionError(
+urllib3.exceptions.NewConnectionError: <urllib3.connection.HTTPConnection object at 0x1495b8f6f8b0>: Failed to establish a new connection: [Errno 111] Connection refused
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/requests/adapters.py", line 667, in send
+    resp = conn.urlopen(
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/urllib3/connectionpool.py", line 841, in urlopen
+    retries = retries.increment(
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/urllib3/util/retry.py", line 519, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+urllib3.exceptions.MaxRetryError: HTTPConnectionPool(host='localhost', port=8097): Max retries exceeded with url: /events (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x1495b8f6f8b0>: Failed to establish a new connection: [Errno 111] Connection refused'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/visdom/__init__.py", line 756, in _send
+    return self._handle_post(
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/visdom/__init__.py", line 720, in _handle_post
+    r = self.session.post(url, data=data)
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/requests/sessions.py", line 637, in post
+    return self.request("POST", url, data=data, json=json, **kwargs)
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/requests/sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/requests/sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/requests/adapters.py", line 700, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPConnectionPool(host='localhost', port=8097): Max retries exceeded with url: /events (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x1495b8f6f8b0>: Failed to establish a new connection: [Errno 111] Connection refused'))
+Traceback (most recent call last):
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/urllib3/connection.py", line 198, in _new_conn
+    sock = connection.create_connection(
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/urllib3/util/connection.py", line 85, in create_connection
+    raise err
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/urllib3/util/connection.py", line 73, in create_connection
+    sock.connect(sa)
+ConnectionRefusedError: [Errno 111] Connection refused
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/urllib3/connectionpool.py", line 787, in urlopen
+    response = self._make_request(
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/urllib3/connectionpool.py", line 493, in _make_request
+    conn.request(
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/urllib3/connection.py", line 445, in request
+    self.endheaders()
+  File "/cvmfs/hpcsw.umd.edu/spack-software/2023.11.20/views/2023/linux-rhel8-zen2/gcc@11.3.0/python-3.10.10/._mpi-nocuda/qd63fn2w5jnqtlfannzt4ilfsbb2xx7q/linux-rhel8-zen2/gcc/11.3.0/lib/python3.10/http/client.py", line 1277, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "/cvmfs/hpcsw.umd.edu/spack-software/2023.11.20/views/2023/linux-rhel8-zen2/gcc@11.3.0/python-3.10.10/._mpi-nocuda/qd63fn2w5jnqtlfannzt4ilfsbb2xx7q/linux-rhel8-zen2/gcc/11.3.0/lib/python3.10/http/client.py", line 1037, in _send_output
+    self.send(msg)
+  File "/cvmfs/hpcsw.umd.edu/spack-software/2023.11.20/views/2023/linux-rhel8-zen2/gcc@11.3.0/python-3.10.10/._mpi-nocuda/qd63fn2w5jnqtlfannzt4ilfsbb2xx7q/linux-rhel8-zen2/gcc/11.3.0/lib/python3.10/http/client.py", line 975, in send
+    self.connect()
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/urllib3/connection.py", line 276, in connect
+    self.sock = self._new_conn()
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/urllib3/connection.py", line 213, in _new_conn
+    raise NewConnectionError(
+urllib3.exceptions.NewConnectionError: <urllib3.connection.HTTPConnection object at 0x1495bdfb42e0>: Failed to establish a new connection: [Errno 111] Connection refused
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/requests/adapters.py", line 667, in send
+    resp = conn.urlopen(
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/urllib3/connectionpool.py", line 841, in urlopen
+    retries = retries.increment(
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/urllib3/util/retry.py", line 519, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+urllib3.exceptions.MaxRetryError: HTTPConnectionPool(host='localhost', port=8097): Max retries exceeded with url: /events (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x1495bdfb42e0>: Failed to establish a new connection: [Errno 111] Connection refused'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/visdom/__init__.py", line 756, in _send
+    return self._handle_post(
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/visdom/__init__.py", line 720, in _handle_post
+    r = self.session.post(url, data=data)
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/requests/sessions.py", line 637, in post
+    return self.request("POST", url, data=data, json=json, **kwargs)
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/requests/sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/requests/sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/requests/adapters.py", line 700, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPConnectionPool(host='localhost', port=8097): Max retries exceeded with url: /events (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x1495bdfb42e0>: Failed to establish a new connection: [Errno 111] Connection refused'))
+Traceback (most recent call last):
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/urllib3/connection.py", line 198, in _new_conn
+    sock = connection.create_connection(
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/urllib3/util/connection.py", line 85, in create_connection
+    raise err
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/urllib3/util/connection.py", line 73, in create_connection
+    sock.connect(sa)
+ConnectionRefusedError: [Errno 111] Connection refused
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/urllib3/connectionpool.py", line 787, in urlopen
+    response = self._make_request(
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/urllib3/connectionpool.py", line 493, in _make_request
+    conn.request(
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/urllib3/connection.py", line 445, in request
+    self.endheaders()
+  File "/cvmfs/hpcsw.umd.edu/spack-software/2023.11.20/views/2023/linux-rhel8-zen2/gcc@11.3.0/python-3.10.10/._mpi-nocuda/qd63fn2w5jnqtlfannzt4ilfsbb2xx7q/linux-rhel8-zen2/gcc/11.3.0/lib/python3.10/http/client.py", line 1277, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "/cvmfs/hpcsw.umd.edu/spack-software/2023.11.20/views/2023/linux-rhel8-zen2/gcc@11.3.0/python-3.10.10/._mpi-nocuda/qd63fn2w5jnqtlfannzt4ilfsbb2xx7q/linux-rhel8-zen2/gcc/11.3.0/lib/python3.10/http/client.py", line 1037, in _send_output
+    self.send(msg)
+  File "/cvmfs/hpcsw.umd.edu/spack-software/2023.11.20/views/2023/linux-rhel8-zen2/gcc@11.3.0/python-3.10.10/._mpi-nocuda/qd63fn2w5jnqtlfannzt4ilfsbb2xx7q/linux-rhel8-zen2/gcc/11.3.0/lib/python3.10/http/client.py", line 975, in send
+    self.connect()
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/urllib3/connection.py", line 276, in connect
+    self.sock = self._new_conn()
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/urllib3/connection.py", line 213, in _new_conn
+    raise NewConnectionError(
+urllib3.exceptions.NewConnectionError: <urllib3.connection.HTTPConnection object at 0x1495b8ff7e20>: Failed to establish a new connection: [Errno 111] Connection refused
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/requests/adapters.py", line 667, in send
+    resp = conn.urlopen(
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/urllib3/connectionpool.py", line 841, in urlopen
+    retries = retries.increment(
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/urllib3/util/retry.py", line 519, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+urllib3.exceptions.MaxRetryError: HTTPConnectionPool(host='localhost', port=8097): Max retries exceeded with url: /events (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x1495b8ff7e20>: Failed to establish a new connection: [Errno 111] Connection refused'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/visdom/__init__.py", line 756, in _send
+    return self._handle_post(
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/visdom/__init__.py", line 720, in _handle_post
+    r = self.session.post(url, data=data)
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/requests/sessions.py", line 637, in post
+    return self.request("POST", url, data=data, json=json, **kwargs)
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/requests/sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/requests/sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+  File "/home/vla/.cycle_gan/lib/python3.10/site-packages/requests/adapters.py", line 700, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPConnectionPool(host='localhost', port=8097): Max retries exceeded with url: /events (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x1495b8ff7e20>: Failed to establish a new connection: [Errno 111] Connection refused'))
+(epoch: 1, iters: 100, time: 0.089, data: 1.207) D_A: 2.882 G_A: 4.317 cycle_A: 5.565 idt_A: 3.743 D_B: 1.789 G_B: 2.392 cycle_B: 7.467 idt_B: 2.716 
+Exception in user code:
+------------------------------------------------------------
+(epoch: 1, iters: 200, time: 0.088, data: 0.001) D_A: 3.107 G_A: 4.306 cycle_A: 5.839 idt_A: 4.165 D_B: 1.823 G_B: 2.499 cycle_B: 8.291 idt_B: 2.919 
+Exception in user code:
+------------------------------------------------------------
+(epoch: 1, iters: 300, time: 0.088, data: 0.001) D_A: 2.887 G_A: 4.419 cycle_A: 6.147 idt_A: 4.068 D_B: 1.733 G_B: 2.404 cycle_B: 8.075 idt_B: 3.079 
+Exception in user code:
+------------------------------------------------------------
+Exception in user code:
+------------------------------------------------------------
+Exception in user code:
+------------------------------------------------------------
+(epoch: 1, iters: 400, time: 0.208, data: 0.001) D_A: 3.058 G_A: 4.285 cycle_A: 7.741 idt_A: 4.187 D_B: 1.807 G_B: 2.420 cycle_B: 8.353 idt_B: 3.874 
+Exception in user code:
+------------------------------------------------------------
+(epoch: 1, iters: 500, time: 0.088, data: 0.002) D_A: 2.890 G_A: 4.477 cycle_A: 6.079 idt_A: 4.135 D_B: 1.709 G_B: 2.152 cycle_B: 8.207 idt_B: 3.029 
+Exception in user code:
+------------------------------------------------------------
+(epoch: 1, iters: 600, time: 0.088, data: 0.002) D_A: 3.095 G_A: 4.306 cycle_A: 6.083 idt_A: 3.662 D_B: 1.777 G_B: 2.286 cycle_B: 7.308 idt_B: 3.037 
+Exception in user code:
+------------------------------------------------------------
+(epoch: 1, iters: 700, time: 0.088, data: 0.001) D_A: 2.936 G_A: 4.169 cycle_A: 6.522 idt_A: 4.116 D_B: 1.780 G_B: 2.126 cycle_B: 8.206 idt_B: 3.241 
+Exception in user code:
+------------------------------------------------------------
+Exception in user code:
+------------------------------------------------------------
+Exception in user code:
+------------------------------------------------------------
+(epoch: 1, iters: 800, time: 0.198, data: 0.001) D_A: 2.877 G_A: 4.225 cycle_A: 6.387 idt_A: 4.068 D_B: 1.753 G_B: 2.479 cycle_B: 8.094 idt_B: 3.186 
+Exception in user code:
+------------------------------------------------------------
+(epoch: 1, iters: 900, time: 0.088, data: 0.002) D_A: 2.954 G_A: 4.430 cycle_A: 7.387 idt_A: 3.788 D_B: 1.779 G_B: 2.422 cycle_B: 7.447 idt_B: 3.719 
+Exception in user code:
+------------------------------------------------------------
+(epoch: 1, iters: 1000, time: 0.092, data: 0.001) D_A: 3.162 G_A: 4.297 cycle_A: 6.730 idt_A: 4.155 D_B: 1.684 G_B: 2.345 cycle_B: 8.202 idt_B: 3.376 
+End of epoch 1 / 1 	 Time Taken: 144 sec
+-------------------------------------------------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  
+                                                   Name    Self CPU %      Self CPU   CPU total %     CPU total  CPU time avg     Self CUDA   Self CUDA %    CUDA total  CUDA time avg       CPU Mem  Self CPU Mem      CUDA Mem  Self CUDA Mem    # of Calls  
+-------------------------------------------------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  
+                                            aten::empty         2.89%     120.176ms         2.89%     120.176ms       4.799us       0.000us         0.00%       0.000us       0.000us         160 b         160 b      54.81 Gb      54.81 Gb         25040  
+                                    aten::empty_strided         0.96%      39.995ms         0.96%      39.995ms       5.265us       0.000us         0.00%       0.000us       0.000us           0 b           0 b      28.62 Gb      28.62 Gb          7596  
+                             aten::convolution_backward         4.96%     206.260ms        11.81%     491.571ms     141.256us     562.977ms        42.01%     628.272ms     180.538us           0 b           0 b      22.94 Gb      16.35 Gb          3480  
+                                aten::cudnn_convolution         2.58%     107.201ms         4.37%     181.702ms      56.081us     242.206ms        18.08%     242.361ms      74.803us           0 b           0 b      12.90 Gb      12.90 Gb          3240  
+                                          aten::resize_         0.26%      10.938ms         0.26%      10.938ms       4.207us       0.000us         0.00%       0.000us       0.000us           0 b           0 b      11.09 Gb      11.09 Gb          2600  
+                               aten::threshold_backward         0.42%      17.633ms         0.71%      29.348ms      17.469us      21.075ms         1.57%      21.075ms      12.545us           0 b           0 b      10.46 Gb      10.46 Gb          1680  
+                                              aten::add         0.33%      13.763ms         0.52%      21.444ms      17.577us       7.611ms         0.57%       7.611ms       6.238us           0 b           0 b       4.29 Gb       4.29 Gb          1220  
+                      aten::cudnn_convolution_transpose         0.19%       7.851ms         0.34%      14.006ms      58.358us      18.013ms         1.34%      18.013ms      75.056us           0 b           0 b       2.84 Gb       2.84 Gb           240  
+                              aten::leaky_relu_backward         0.12%       4.906ms         0.20%       8.485ms      17.677us       2.185ms         0.16%       2.185ms       4.553us           0 b           0 b       1.05 Gb       1.05 Gb           480  
+                                             aten::tanh         0.05%       1.942ms         0.07%       2.761ms      23.007us     344.287us         0.03%     344.287us       2.869us           0 b           0 b      90.00 Mb      90.00 Mb           120  
+                                    aten::tanh_backward         0.03%       1.201ms         0.05%       2.086ms      17.385us     423.318us         0.03%     423.318us       3.528us           0 b           0 b      90.00 Mb      90.00 Mb           120  
+                                              aten::mul         0.11%       4.738ms         0.19%       7.808ms      19.519us     835.159us         0.06%     835.159us       2.088us           0 b           0 b      60.16 Mb      60.16 Mb           400  
+                                              aten::sub         0.03%       1.248ms         0.05%       1.945ms      24.309us     268.575us         0.02%     268.575us       3.357us           0 b           0 b      60.00 Mb      60.00 Mb            80  
+                                              aten::div         0.05%       1.964ms         0.07%       2.760ms      34.499us     266.336us         0.02%     266.336us       3.329us           0 b           0 b      60.00 Mb      60.00 Mb            80  
+                                              aten::sgn         0.02%     827.984us         0.04%       1.469ms      18.361us     226.050us         0.02%     226.050us       2.826us           0 b           0 b      60.00 Mb      60.00 Mb            80  
+                                              aten::cat         0.02%     978.350us         0.05%       1.921ms      48.030us     119.906us         0.01%     119.906us       2.998us           0 b           0 b      30.00 Mb      30.00 Mb            40  
+                                           Buffer Flush         0.04%       1.867ms         0.05%       1.941ms      88.238us     206.686us         0.02%     206.686us       9.395us           8 b           8 b      24.27 Mb      13.89 Mb            22  
+                                              aten::sum         1.31%      54.385ms         1.92%      79.976ms      24.383us      65.295ms         4.87%      65.295ms      19.907us           0 b           0 b       2.87 Mb       2.87 Mb          3280  
+                                             aten::mean         0.07%       2.975ms         0.12%       4.874ms      24.372us       1.180ms         0.09%       1.180ms       5.901us           0 b           0 b      40.00 Kb      40.00 Kb           200  
+enumerate(DataLoader)#_MultiProcessingDataLoaderIter...         0.48%      20.034ms         0.49%      20.276ms       1.014ms       0.000us         0.00%       0.000us       0.000us      30.00 Mb      30.00 Mb           0 b           0 b            20  
+                                             aten::set_         0.00%     126.324us         0.00%     126.324us       3.158us       0.000us         0.00%       0.000us       0.000us           0 b           0 b           0 b           0 b            40  
+                                               aten::to         0.05%       1.921ms         0.45%      18.630ms       5.612us       0.000us         0.00%      11.250ms       3.389us           0 b           0 b      30.00 Mb           0 b          3320  
+                                         aten::_to_copy         0.01%     229.488us         0.40%      16.709ms     417.718us       0.000us         0.00%      11.250ms     281.255us           0 b           0 b      30.00 Mb           0 b            40  
+                                            aten::copy_         0.87%      36.240ms         3.02%     125.676ms      15.149us      73.770ms         5.51%      73.770ms       8.892us           0 b           0 b           0 b           0 b          8296  
+                                        cudaMemcpyAsync         1.89%      78.584ms         1.89%      78.584ms       9.427us       0.000us         0.00%       0.000us       0.000us           0 b           0 b           0 b           0 b          8336  
+                                          ProfilerStep*         0.00%       0.000us         0.00%       0.000us       0.000us        2.692s       200.89%        2.692s     134.594ms           0 b           0 b           0 b           0 b            20  
+                       Memcpy HtoD (Pageable -> Device)         0.00%       0.000us         0.00%       0.000us       0.000us      11.250ms         0.84%      11.250ms     281.255us           0 b           0 b           0 b           0 b            40  
+                                  cudaStreamSynchronize         0.28%      11.484ms         0.28%      11.484ms     287.105us       0.000us         0.00%       0.000us       0.000us           0 b           0 b           0 b           0 b            40  
+                                                Scatter         0.21%       8.947ms         0.30%      12.568ms      52.367us       0.000us         0.00%       0.000us       0.000us           0 b           0 b           0 b           0 b           240  
+                                            aten::chunk         0.01%     601.074us         0.09%       3.621ms      15.089us       0.000us         0.00%       0.000us       0.000us           0 b           0 b           0 b           0 b           240  
+                                            aten::split         0.02%       1.009ms         0.07%       3.020ms      12.584us       0.000us         0.00%       0.000us       0.000us           0 b           0 b           0 b           0 b           240  
+                                           aten::narrow         0.02%     781.874us         0.06%       2.322ms       8.295us       0.000us         0.00%       0.000us       0.000us           0 b           0 b           0 b           0 b           280  
+                                            aten::slice         0.03%       1.074ms         0.04%       1.541ms       5.502us       0.000us         0.00%       0.000us       0.000us           0 b           0 b           0 b           0 b           280  
+                                       aten::as_strided         0.44%      18.151ms         0.44%      18.151ms       1.478us       0.000us         0.00%       0.000us       0.000us           0 b           0 b           0 b           0 b         12280  
+                                              aten::pad         0.12%       5.052ms         1.69%      70.484ms      29.368us       0.000us         0.00%      35.980ms      14.992us           0 b           0 b      11.03 Gb           0 b          2400  
+                                 aten::reflection_pad2d         0.62%      25.895ms         1.57%      65.433ms      27.264us      35.966ms         2.68%      35.980ms      14.992us           0 b           0 b      11.03 Gb           0 b          2400  
+                                       cudaLaunchKernel        11.03%     458.944ms        11.03%     458.944ms       5.928us       0.000us         0.00%       0.000us       0.000us           0 b           0 b           0 b           0 b         77420  
+                                   DataParallel.forward         0.00%       0.000us         0.00%       0.000us       0.000us     999.888ms        74.62%     999.888ms       4.166ms           0 b           0 b           0 b           0 b           240  
+void at::native::(anonymous namespace)::reflection_p...         0.00%       0.000us         0.00%       0.000us       0.000us      35.966ms         2.68%      35.966ms      14.986us           0 b           0 b           0 b           0 b          2400  
+                                           aten::conv2d         0.23%       9.584ms         7.51%     312.526ms      96.459us       0.000us         0.00%     264.269ms      81.564us           0 b           0 b      12.90 Gb           0 b          3240  
+                                      aten::convolution         0.68%      28.255ms         7.82%     325.477ms      93.528us       0.000us         0.00%     285.779ms      82.120us           0 b           0 b      15.75 Gb           0 b          3480  
+                                     aten::_convolution         0.91%      37.684ms         7.14%     297.221ms      85.408us       0.000us         0.00%     285.779ms      82.120us           0 b           0 b      15.75 Gb           0 b          3480  
+                                        cudaEventRecord         0.44%      18.151ms         0.44%      18.151ms       1.801us       0.000us         0.00%       0.000us       0.000us           0 b           0 b           0 b           0 b         10080  
+                                  cudaStreamIsCapturing         0.11%       4.578ms         0.11%       4.578ms       0.452us       0.000us         0.00%       0.000us       0.000us           0 b           0 b           0 b           0 b         10120  
+                                  cudaStreamGetPriority         0.09%       3.700ms         0.09%       3.700ms       0.367us       0.000us         0.00%       0.000us       0.000us           0 b           0 b           0 b           0 b         10080  
+                       cudaDeviceGetStreamPriorityRange         0.08%       3.360ms         0.08%       3.360ms       0.333us       0.000us         0.00%       0.000us       0.000us           0 b           0 b           0 b           0 b         10080  
+void cudnn::engines_precompiled::nchwToNhwcKernel<fl...         0.00%       0.000us         0.00%       0.000us       0.000us     148.218ms        11.06%     148.218ms       7.704us           0 b           0 b           0 b           0 b         19240  
+                                    cudaPeekAtLastError         0.04%       1.739ms         0.04%       1.739ms       0.089us       0.000us         0.00%       0.000us       0.000us           0 b           0 b           0 b           0 b         19600  
+                                    cudaLaunchKernelExC         0.39%      16.041ms         0.39%      16.041ms       4.663us       0.000us         0.00%       0.000us       0.000us           0 b           0 b           0 b           0 b          3440  
+sm80_xmma_fprop_implicit_gemm_indexed_wo_smem_tf32f3...         0.00%       0.000us         0.00%       0.000us       0.000us       6.470ms         0.48%       6.470ms      53.914us           0 b           0 b           0 b           0 b           120  
+                                          aten::reshape         0.55%      22.993ms         1.14%      47.472ms       2.355us       0.000us         0.00%       0.000us       0.000us           0 b           0 b           0 b           0 b         20160  
+                                             aten::view         1.19%      49.370ms         1.19%      49.370ms       1.513us       0.000us         0.00%       0.000us       0.000us           0 b           0 b           0 b           0 b         32640  
+                                             aten::add_         1.51%      62.867ms         2.69%     111.952ms      10.032us      48.351ms         3.61%      48.351ms       4.333us           0 b           0 b           0 b           0 b         11160  
+void cudnn::engines_precompiled::nhwcToNchwKernel<fl...         0.00%       0.000us         0.00%       0.000us       0.000us      46.475ms         3.47%      46.475ms       6.716us           0 b           0 b           0 b           0 b          6920  
+void at::native::elementwise_kernel<128, 2, at::nati...         0.00%       0.000us         0.00%       0.000us       0.000us      25.405ms         1.90%      25.405ms       7.300us           0 b           0 b           0 b           0 b          3480  
+                                    aten::instance_norm         0.38%      15.612ms         6.43%     267.692ms      85.799us       0.000us         0.00%      74.650ms      23.926us           0 b           0 b      15.32 Gb           0 b          3120  
+                                       aten::batch_norm         0.15%       6.163ms         5.51%     229.392ms      73.523us       0.000us         0.00%      74.650ms      23.926us           0 b           0 b      15.32 Gb           0 b          3120  
+                           aten::_batch_norm_impl_index         0.31%      12.798ms         5.36%     223.228ms      71.547us       0.000us         0.00%      74.650ms      23.926us           0 b           0 b      15.32 Gb           0 b          3120  
+                                aten::native_batch_norm         1.82%      75.870ms         4.66%     193.933ms      62.158us      74.619ms         5.57%      74.650ms      23.926us           0 b           0 b      15.32 Gb           0 b          3120  
+                                       aten::empty_like         0.56%      23.162ms         2.07%      86.263ms       8.002us       0.000us         0.00%       0.000us       0.000us           0 b           0 b      52.33 Gb           0 b         10780  
+void at::native::batch_norm_collect_statistics_kerne...         0.00%       0.000us         0.00%       0.000us       0.000us      35.673ms         2.66%      35.673ms      11.434us           0 b           0 b           0 b           0 b          3120  
+void at::native::vectorized_elementwise_kernel<4, at...         0.00%       0.000us         0.00%       0.000us       0.000us       6.342ms         0.47%       6.342ms       2.033us           0 b           0 b           0 b           0 b          3120  
+void at::native::batch_norm_transform_input_kernel<f...         0.00%       0.000us         0.00%       0.000us       0.000us      32.604ms         2.43%      32.604ms      10.450us           0 b           0 b           0 b           0 b          3120  
+                                            aten::relu_         0.49%      20.224ms         1.02%      42.419ms      25.249us       0.000us         0.00%       9.646ms       5.742us           0 b           0 b           0 b           0 b          1680  
+                                       aten::clamp_min_         0.25%      10.518ms         0.53%      22.194ms      13.211us       9.646ms         0.72%       9.646ms       5.742us           0 b           0 b           0 b           0 b          1680  
+void at::native::vectorized_elementwise_kernel<4, at...         0.00%       0.000us         0.00%       0.000us       0.000us       9.646ms         0.72%       9.646ms       5.742us           0 b           0 b           0 b           0 b          1680  
+                                   cudaFuncSetAttribute         0.19%       7.908ms         0.19%       7.908ms       0.632us       0.000us         0.00%       0.000us       0.000us           0 b           0 b           0 b           0 b         12520  
+sm80_xmma_fprop_implicit_gemm_tf32f32_tf32f32_f32_nh...         0.00%       0.000us         0.00%       0.000us       0.000us     156.862ms        11.71%     156.862ms      59.417us           0 b           0 b           0 b           0 b          2640  
+void at::native::vectorized_elementwise_kernel<4, at...         0.00%       0.000us         0.00%       0.000us       0.000us      30.826ms         2.30%      30.826ms       4.628us           0 b           0 b           0 b           0 b          6660  
+                                 aten::conv_transpose2d         0.02%     717.263us         0.56%      23.252ms      96.883us       0.000us         0.00%      21.510ms      89.627us           0 b           0 b       2.84 Gb           0 b           240  
+void cutlass__5x_cudnn::Kernel<cutlass_tensorop_s168...         0.00%       0.000us         0.00%       0.000us       0.000us      12.633ms         0.94%      12.633ms      35.092us           0 b           0 b           0 b           0 b           360  
+void cutlass__5x_cudnn::Kernel<cutlass_tensorop_s168...         0.00%       0.000us         0.00%       0.000us       0.000us      17.759ms         1.33%      17.759ms      49.332us           0 b           0 b           0 b           0 b           360  
+sm80_xmma_fprop_implicit_gemm_indexed_wo_smem_tf32f3...         0.00%       0.000us         0.00%       0.000us       0.000us      19.874ms         1.48%      19.874ms     165.615us           0 b           0 b           0 b           0 b           120  
+void at::native::vectorized_elementwise_kernel<4, at...         0.00%       0.000us         0.00%       0.000us       0.000us     344.287us         0.03%     344.287us       2.869us           0 b           0 b           0 b           0 b           120  
+                                aten::broadcast_tensors         0.01%     309.227us         0.01%     309.227us       1.546us       0.000us         0.00%       0.000us       0.000us           0 b           0 b           0 b           0 b           200  
+                                              aten::abs         0.03%       1.128ms         0.09%       3.555ms      22.221us     192.252us         0.01%     384.504us       2.403us           0 b           0 b     120.00 Mb           0 b           160  
+void at::native::vectorized_elementwise_kernel<4, at...         0.00%       0.000us         0.00%       0.000us       0.000us     192.252us         0.01%     192.252us       2.403us           0 b           0 b           0 b           0 b            80  
+                                        cudaMemsetAsync         0.64%      26.696ms         0.64%      26.696ms       6.417us       0.000us         0.00%       0.000us       0.000us           0 b           0 b           0 b           0 b          4160  
+                                        Memset (Device)         0.00%       0.000us         0.00%       0.000us       0.000us      16.569ms         1.24%      16.569ms       3.983us           0 b           0 b           0 b           0 b          4160  
+void at::native::reduce_kernel<512, 1, at::native::R...         0.00%       0.000us         0.00%       0.000us       0.000us       1.096ms         0.08%       1.096ms       5.481us           0 b           0 b           0 b           0 b           200  
+void at::native::vectorized_elementwise_kernel<4, at...         0.00%       0.000us         0.00%       0.000us       0.000us     626.135us         0.05%     626.135us       1.957us           0 b           0 b           0 b           0 b           320  
+void implicit_convolve_sgemm<float, float, 128, 5, 5...         0.00%       0.000us         0.00%       0.000us       0.000us       2.289ms         0.17%       2.289ms      19.071us           0 b           0 b           0 b           0 b           120  
+                                      aten::leaky_relu_         0.18%       7.490ms         0.26%      10.904ms      22.717us       1.650ms         0.12%       1.650ms       3.438us           0 b           0 b           0 b           0 b           480  
+void at::native::vectorized_elementwise_kernel<4, at...         0.00%       0.000us         0.00%       0.000us       0.000us       1.650ms         0.12%       1.650ms       3.438us           0 b           0 b           0 b           0 b           480  
+void cutlass__5x_cudnn::Kernel<cutlass_tensorop_s168...         0.00%       0.000us         0.00%       0.000us       0.000us       9.680ms         0.72%       9.680ms      40.333us           0 b           0 b           0 b           0 b           240  
+sm80_xmma_fprop_implicit_gemm_tf32f32_tf32f32_f32_nh...         0.00%       0.000us         0.00%       0.000us       0.000us       3.095ms         0.23%       3.095ms      25.796us           0 b           0 b           0 b           0 b           120  
+                                 cudaDeviceGetAttribute         0.01%     492.517us         0.01%     492.517us       0.257us       0.000us         0.00%       0.000us       0.000us           0 b           0 b           0 b           0 b          1920  
+                                  cudaFuncGetAttributes         0.04%       1.556ms         0.04%       1.556ms       3.241us       0.000us         0.00%       0.000us       0.000us           0 b           0 b           0 b           0 b           480  
+cudaOccupancyMaxActiveBlocksPerMultiprocessorWithFla...         0.01%     375.295us         0.01%     375.295us       0.782us       0.000us         0.00%       0.000us       0.000us           0 b           0 b           0 b           0 b           480  
+void tensorTransformGeneric<float, float, float, tru...         0.00%       0.000us         0.00%       0.000us       0.000us       6.183ms         0.46%       6.183ms      17.175us           0 b           0 b           0 b           0 b           360  
+sm80_xmma_fprop_implicit_gemm_tf32f32_tf32f32_f32_nh...         0.00%       0.000us         0.00%       0.000us       0.000us       3.814ms         0.28%       3.814ms      31.781us           0 b           0 b           0 b           0 b           120  
+void nchwAddPaddingKernel<float, float, float, true,...         0.00%       0.000us         0.00%       0.000us       0.000us     290.203us         0.02%     290.203us       2.418us           0 b           0 b           0 b           0 b           120  
+                                        aten::expand_as         0.01%     259.668us         0.02%       1.037ms       8.642us       0.000us         0.00%       0.000us       0.000us           0 b           0 b           0 b           0 b           120  
+                                           aten::expand         0.02%     918.676us         0.03%       1.270ms       6.351us       0.000us         0.00%       0.000us       0.000us           0 b           0 b           0 b           0 b           200  
+                                         aten::mse_loss         0.08%       3.487ms         0.18%       7.511ms      62.588us     347.362us         0.03%     866.621us       7.222us           0 b           0 b     480.00 Kb           0 b           120  
+void at::native::elementwise_kernel<128, 2, at::nati...         0.00%       0.000us         0.00%       0.000us       0.000us     347.362us         0.03%     347.362us       2.895us           0 b           0 b           0 b           0 b           120  
+                                        aten::ones_like         0.00%     185.412us         0.06%       2.581ms      43.019us       0.000us         0.00%     101.341us       1.689us           0 b           0 b      30.00 Kb           0 b            60  
+                                            aten::fill_         0.52%      21.510ms         1.39%      57.655ms      12.699us      18.058ms         1.35%      18.058ms       3.977us           0 b           0 b           0 b           0 b          4540  
+void at::native::vectorized_elementwise_kernel<4, at...         0.00%       0.000us         0.00%       0.000us       0.000us      18.058ms         1.35%      18.058ms       3.977us           0 b           0 b           0 b           0 b          4540  
+      autograd::engine::evaluate_function: AddBackward0         0.14%       5.757ms         0.17%       6.965ms       5.709us       0.000us         0.00%       0.000us       0.000us           0 b           0 b           0 b           0 b          1220  
+-------------------------------------------------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  
+Self CPU time total: 4.161s
+Self CUDA time total: 1.340s
+

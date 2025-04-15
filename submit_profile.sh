@@ -6,8 +6,9 @@
 #SBATCH --gpus=a100:1
 #SBATCH --exclusive
 
-source ~/.bashrc
-micromamba activate CYCLEGAN
+#source ~/.bashrc
+#micromamba activate CYCLEGAN
+. ~/.cycle_gan/bin/activate
 
 srun python profile_model.py --dataroot /scratch/zt1/project/cmsc828/user/vla/datasets/maps \
                         --name maps_cyclegan \
