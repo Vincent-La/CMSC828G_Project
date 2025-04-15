@@ -5,7 +5,6 @@ checkpoints/
 results/
 build/
 dist/
-*.png
 torch.egg-info/
 */**/__pycache__
 torch/version.py
@@ -45,3 +44,5 @@ traces/
 
 #Ignore Wandb
 wandb/
+**/*.zip
+traces.zip
