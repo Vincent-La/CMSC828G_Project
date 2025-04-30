@@ -20,14 +20,26 @@ opt.load_size = 286
 opt.crop_size = 256
 opt.no_flip = False
 opt.serial_batches = False
+opt.num_threads = 1
+# NOTE: experiment w/ this to increase GPU utilization with cuda streams
+opt.batch_size = 8
 
+# create dataset
 dataset = dataset_class(opt)
+# create dataloader
+dataloader = torch.utils.data.DataLoader(dataset,
+                                         batch_size=opt.batch_size,
+                                         shuffle=not opt.serial_batches,
+                                         num_workers=int(opt.num_threads)
+)
 
 model = CycleGAN(device=device)
 
-schedule = torch.profiler.schedule(wait=5, warmup=5, active=20, repeat=3)
-trace_handler = torch.profiler.tensorboard_trace_handler(dir_name = './dist_traces', use_gzip=False)
-os.makedirs('./dist_traces', exist_ok=True)
+schedule = torch.profiler.schedule(wait=5, warmup=5, active=20, repeat=1)
+
+output_dir = './dist_traces_largebatch'
+os.makedirs(output_dir, exist_ok=True)
+trace_handler = torch.profiler.tensorboard_trace_handler(dir_name = output_dir, use_gzip=False)
 
 with torch.profiler.profile(
             activities=[
@@ -43,29 +55,21 @@ with torch.profiler.profile(
 ) as prof:
 
     # one epoch for now
-    # for i in range(1):
 
     # TODO: adapt update learning rates? maybe unecessary
-
-    print('Start Profiling!')
-    # for i, data in enumerate(dataset):
-    for i in range(len(dataset)):
+    print('Start Profiling!', flush=True)
+    for i, data in enumerate(dataloader):
         
-        data = dataset[i]
-
-        if i == 100:
-            break
+        # if i == 100:
+        #     break
 
         # forward pass
         model(data)
         model.optimize_parameters()
         prof.step()
-        
 
-    print('Outputting memory timeline')
     # Construct the memory timeline HTML plot.
-    prof.export_memory_timeline(f"dist_timeline.html", device="cuda:0")
+    prof.export_memory_timeline(f"dist_timeline_largebatch.html", device="cuda:0")
 
-    print('metrics table:')
     # metrics table 
     print(prof.key_averages().table(sort_by="self_cuda_memory_usage"))

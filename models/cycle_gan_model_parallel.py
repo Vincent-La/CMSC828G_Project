@@ -91,6 +91,9 @@ class CycleGAN(nn.Module):
 
 
 
+        # TODO:
+        # if implementing DDP assign device according to assigned rank
+        # https://discuss.pytorch.org/t/distributed-data-parallel-and-cuda-graph/169998/4
         # NOTE: experimenting w/ two cuda streams (on same device)
         self.s1 = torch.cuda.Stream(device = self.device)
         self.s2 = torch.cuda.Stream(device = self.device)
@@ -198,6 +201,7 @@ class CycleGAN(nn.Module):
 
 
 
+    # NOTE: https://pytorch.org/docs/stable/notes/cuda.html#stream-semantics-of-backward-passes
     def optimize_parameters(self):
         """Calculate losses, gradients, and update network weights; called in every training iteration"""
         # G_A and G_B
@@ -205,6 +209,8 @@ class CycleGAN(nn.Module):
         self.optimizer_G.zero_grad()  # set G_A and G_B's gradients to zero
         self.backward_G()             # calculate gradients for G_A and G_B
         self.optimizer_G.step()       # update G_A and G_B's weights
+
+
         # D_A and D_B
         self.set_requires_grad([self.netD_A, self.netD_B], True)
         self.optimizer_D.zero_grad()   # set D_A and D_B's gradients to zero
