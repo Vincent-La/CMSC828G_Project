@@ -2,7 +2,9 @@ from models.cycle_gan_model_parallel import CycleGAN
 from data import create_dataset, find_dataset_using_name
 import argparse
 import torch
+import os
 
+# single cuda device for now
 device = torch.device(0)
 
 dataset_class = find_dataset_using_name('unaligned')
@@ -25,6 +27,7 @@ model = CycleGAN(device=device)
 
 schedule = torch.profiler.schedule(wait=5, warmup=5, active=20, repeat=3)
 trace_handler = torch.profiler.tensorboard_trace_handler(dir_name = './dist_traces', use_gzip=False)
+os.makedirs('./dist_traces', exist_ok=True)
 
 with torch.profiler.profile(
             activities=[
@@ -40,22 +43,29 @@ with torch.profiler.profile(
 ) as prof:
 
     # one epoch for now
-    for i in range(1):
+    # for i in range(1):
 
-        # TODO: adapt update learning rates? maybe unecessary
-        for i, data in enumerate(dataset):
+    # TODO: adapt update learning rates? maybe unecessary
 
-            if i % 100 == 0:
-                break
-            # forward pass
-            model(data)
-            model.optimize_parameters()
-            prof.step()
+    print('Start Profiling!')
+    # for i, data in enumerate(dataset):
+    for i in range(len(dataset)):
         
-        break
+        data = dataset[i]
 
+        if i == 100:
+            break
+
+        # forward pass
+        model(data)
+        model.optimize_parameters()
+        prof.step()
+        
+
+    print('Outputting memory timeline')
     # Construct the memory timeline HTML plot.
     prof.export_memory_timeline(f"dist_timeline.html", device="cuda:0")
 
+    print('metrics table:')
     # metrics table 
     print(prof.key_averages().table(sort_by="self_cuda_memory_usage"))

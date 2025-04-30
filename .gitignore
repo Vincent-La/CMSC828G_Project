@@ -46,3 +46,4 @@ traces/
 wandb/
 **/*.zip
 traces.zip
+dist_traces/
