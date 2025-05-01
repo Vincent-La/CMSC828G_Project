@@ -9,7 +9,7 @@ device = torch.device(0)
 
 dataset_class = find_dataset_using_name('unaligned')
 opt = argparse.Namespace()
-opt.dataroot = '/fs/nexus-scratch/vla/datasets/maps'
+opt.dataroot = '/scratch/zt1/project/cmsc828/shared/cgan_perf/datasets/maps'
 opt.max_dataset_size = float('inf')
 opt.input_nc = 3
 opt.output_nc = 3
@@ -22,7 +22,7 @@ opt.no_flip = False
 opt.serial_batches = False
 opt.num_threads = 1
 # NOTE: experiment w/ this to increase GPU utilization with cuda streams
-opt.batch_size = 8
+opt.batch_size = 16
 
 # create dataset
 dataset = dataset_class(opt)
@@ -33,11 +33,12 @@ dataloader = torch.utils.data.DataLoader(dataset,
                                          num_workers=int(opt.num_threads)
 )
 
-model = CycleGAN(device=device)
+print('Dataset loaded!')
 
+model = CycleGAN(device=device)
 schedule = torch.profiler.schedule(wait=5, warmup=5, active=20, repeat=1)
 
-output_dir = './dist_traces_largebatch'
+output_dir = '/scratch/zt1/project/cmsc828/user/vla/16_dist_test'
 os.makedirs(output_dir, exist_ok=True)
 trace_handler = torch.profiler.tensorboard_trace_handler(dir_name = output_dir, use_gzip=False)
 

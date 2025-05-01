@@ -6,7 +6,7 @@ import time
 from options.train_options import TrainOptions
 from data import create_dataset
 from models import create_model
-from util.visualizer import Visualizer
+# from util.visualizer import Visualizer
 import torch
 import os
 
@@ -27,7 +27,7 @@ if __name__ == '__main__':
 
     model = create_model(opt)      # create a model given opt.model and other options
     model.setup(opt)               # regular setup: load and print networks; create schedulers
-    visualizer = Visualizer(opt)   # create a visualizer that display/save images and plots
+    # visualizer = Visualizer(opt)   # create a visualizer that display/save images and plots
     total_iters = 0                # the total number of training iterations
 
 
@@ -35,8 +35,12 @@ if __name__ == '__main__':
    # and with_stack set to True.
    # NOTE: adapted from: https://pytorch.org/blog/understanding-gpu-memory-1/ and https://hta.readthedocs.io/en/latest/source/intro/trace_collection.html 
     
-    schedule = torch.profiler.schedule(wait=5, warmup=5, active=20, repeat=3)
-    trace_handler = torch.profiler.tensorboard_trace_handler(dir_name = './traces', use_gzip=False)
+
+    output_dir = '/scratch/zt1/project/cmsc828/user/vla/single_gpu_traces'
+    os.makedirs(output_dir, exist_ok=True)
+    schedule = torch.profiler.schedule(wait=5, warmup=5, active=20, repeat=1)
+    trace_handler = torch.profiler.tensorboard_trace_handler(dir_name = output_dir, use_gzip=False)
+
 
     # libkineto integration? https://github.com/pytorch/kineto/issues/973
     # experimental_config = torch.profiler._ExperimentalConfig(
@@ -63,7 +67,7 @@ if __name__ == '__main__':
             epoch_start_time = time.time()  # timer for entire epoch
             iter_data_time = time.time()    # timer for data loading per iteration
             epoch_iter = 0                  # the number of training iterations in current epoch, reset to 0 every epoch
-            visualizer.reset()              # reset the visualizer: make sure it saves the results to HTML at least once every epoch
+            # visualizer.reset()              # reset the visualizer: make sure it saves the results to HTML at least once every epoch
             model.update_learning_rate()    # update learning rates in the beginning of every epoch.
             for i, data in enumerate(dataset):  # inner loop within one epoch
                 iter_start_time = time.time()  # timer for computation per iteration
@@ -75,22 +79,22 @@ if __name__ == '__main__':
                 model.set_input(data)         # unpack data from dataset and apply preprocessing
                 model.optimize_parameters()   # calculate loss functions, get gradients, update network weights
 
-                if total_iters % opt.display_freq == 0:   # display images on visdom and save images to a HTML file
-                    save_result = total_iters % opt.update_html_freq == 0
-                    model.compute_visuals()
-                    visualizer.display_current_results(model.get_current_visuals(), epoch, save_result)
+                # if total_iters % opt.display_freq == 0:   # display images on visdom and save images to a HTML file
+                #     save_result = total_iters % opt.update_html_freq == 0
+                #     model.compute_visuals()
+                #     visualizer.display_current_results(model.get_current_visuals(), epoch, save_result)
 
-                if total_iters % opt.print_freq == 0:    # print training losses and save logging information to the disk
-                    losses = model.get_current_losses()
-                    t_comp = (time.time() - iter_start_time) / opt.batch_size
-                    visualizer.print_current_losses(epoch, epoch_iter, losses, t_comp, t_data)
-                    if opt.display_id > 0:
-                        visualizer.plot_current_losses(epoch, float(epoch_iter) / dataset_size, losses)
+                # if total_iters % opt.print_freq == 0:    # print training losses and save logging information to the disk
+                #     losses = model.get_current_losses()
+                #     t_comp = (time.time() - iter_start_time) / opt.batch_size
+                #     visualizer.print_current_losses(epoch, epoch_iter, losses, t_comp, t_data)
+                #     if opt.display_id > 0:
+                #         visualizer.plot_current_losses(epoch, float(epoch_iter) / dataset_size, losses)
 
-                if total_iters % opt.save_latest_freq == 0:   # cache our latest model every <save_latest_freq> iterations
-                    print('saving the latest model (epoch %d, total_iters %d)' % (epoch, total_iters))
-                    save_suffix = 'iter_%d' % total_iters if opt.save_by_iter else 'latest'
-                    model.save_networks(save_suffix)
+                # if total_iters % opt.save_latest_freq == 0:   # cache our latest model every <save_latest_freq> iterations
+                #     print('saving the latest model (epoch %d, total_iters %d)' % (epoch, total_iters))
+                #     save_suffix = 'iter_%d' % total_iters if opt.save_by_iter else 'latest'
+                #     model.save_networks(save_suffix)
 
                 iter_data_time = time.time()
 
