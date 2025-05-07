@@ -44,7 +44,5 @@ traces/
 
 #Ignore Wandb
 wandb/
-**/*.zip
-traces.zip
 dist_traces/
 dist_traces_largebatch/
