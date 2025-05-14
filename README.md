@@ -1,4 +1,4 @@
-# CMSC828G Final Project
+# Cycling Faster Through CycleGAN
 
 + Original [README](original_README.md)
 + Dataset path (scratch space): `/scratch/zt1/project/cmsc828/shared/cgan_perf/datasets/maps`
