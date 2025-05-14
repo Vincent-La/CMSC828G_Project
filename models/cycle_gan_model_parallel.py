@@ -13,7 +13,7 @@ from . import networks
 # stripped down pytorch module CycleGAN class
 class CycleGAN(nn.Module):
 
-    def __init__(self, isTrain = True, device = 'cuda'):
+    def __init__(self, isTrain = True, device = 'cuda', netG = 'resnet_9blocks'):
         super().__init__()
         self.isTrain = isTrain
         self.device = device
@@ -31,7 +31,7 @@ class CycleGAN(nn.Module):
         # of gen filters in last conv layer
         self.ngf = 64
         # generator architecture
-        self.netG = 'resnet_9blocks'
+        self.netG = netG
         # normalization type
         self.norm = 'instance'
         # no dropout for generator

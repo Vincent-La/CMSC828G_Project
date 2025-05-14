@@ -1,5 +1,6 @@
 #!/bin/bash
 #SBATCH -J cyclegan_profile
+#SBATCH --output=cyclegan_default_24.out
 #SBATCH -t 15:00
 #SBATCH -N 1
 #SBATCH -p gpu
@@ -15,6 +16,6 @@ srun python profile_model.py --dataroot /scratch/zt1/project/cmsc828/shared/cgan
                              --model cycle_gan \
                              --n_epochs 1 \
                              --n_epochs_decay 0 \
-                             --batch_size 16 \
+                             --batch_size 24 \
                              --no_html
 

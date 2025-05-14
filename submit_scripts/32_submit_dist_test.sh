@@ -1,5 +1,6 @@
 #!/bin/bash
-#SBATCH -J cyclegan_dist_test_16
+#SBATCH -J cyclegan_dist_test
+#SBATCH --output=cyclegan_32.out
 #SBATCH -t 15:00
 #SBATCH -N 1
 #SBATCH -p gpu
@@ -8,4 +9,4 @@
 
 . ~/.cycle_gan/bin/activate
 
-srun python dist_test.py
+srun python dist_test.py --batch_size 32

@@ -36,7 +36,7 @@ if __name__ == '__main__':
    # NOTE: adapted from: https://pytorch.org/blog/understanding-gpu-memory-1/ and https://hta.readthedocs.io/en/latest/source/intro/trace_collection.html 
     
 
-    output_dir = '/scratch/zt1/project/cmsc828/user/vla/single_gpu_traces'
+    output_dir = f'/scratch/zt1/project/cmsc828/user/vla/{opt.batch_size}_single_gpu_traces'
     os.makedirs(output_dir, exist_ok=True)
     schedule = torch.profiler.schedule(wait=5, warmup=5, active=20, repeat=1)
     trace_handler = torch.profiler.tensorboard_trace_handler(dir_name = output_dir, use_gzip=False)
@@ -109,7 +109,7 @@ if __name__ == '__main__':
             print('End of epoch %d / %d \t Time Taken: %d sec' % (epoch, opt.n_epochs + opt.n_epochs_decay, time.time() - epoch_start_time))
     
     # Construct the memory timeline HTML plot.
-    prof.export_memory_timeline(f"timeline.html", device="cuda:0")
+    prof.export_memory_timeline(os.path.join(output_dir, f"timeline.html"), device="cuda:0")
 
     # metrics table 
     print(prof.key_averages().table(sort_by="self_cuda_memory_usage"))

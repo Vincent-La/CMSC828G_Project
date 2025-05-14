@@ -1,0 +1,187 @@
+/home/vla/.cycle_gan/lib/python3.10/site-packages/torch/optim/lr_scheduler.py:227: UserWarning: Detected call of `lr_scheduler.step()` before `optimizer.step()`. In PyTorch 1.1.0 and later, you should call them in the opposite order: `optimizer.step()` before `lr_scheduler.step()`.  Failure to do this will result in PyTorch skipping the first value of the learning rate schedule. See more details at https://pytorch.org/docs/stable/optim.html#how-to-adjust-learning-rate
+  warnings.warn(
+----------------- Options ---------------
+               batch_size: 20                            	[default: 1]
+                    beta1: 0.5                           
+          checkpoints_dir: ./checkpoints                 
+           continue_train: False                         
+                crop_size: 256                           
+                 dataroot: /scratch/zt1/project/cmsc828/shared/cgan_perf/datasets/maps	[default: None]
+             dataset_mode: unaligned                     
+                direction: AtoB                          
+              display_env: main                          
+             display_freq: 400                           
+               display_id: 1                             
+            display_ncols: 4                             
+             display_port: 8097                          
+           display_server: http://localhost              
+          display_winsize: 256                           
+                    epoch: latest                        
+              epoch_count: 1                             
+                 gan_mode: lsgan                         
+                  gpu_ids: 0                             
+                init_gain: 0.02                          
+                init_type: normal                        
+                 input_nc: 3                             
+                  isTrain: True                          	[default: None]
+                 lambda_A: 10.0                          
+                 lambda_B: 10.0                          
+          lambda_identity: 0.5                           
+                load_iter: 0                             	[default: 0]
+                load_size: 286                           
+                       lr: 0.0002                        
+           lr_decay_iters: 50                            
+                lr_policy: linear                        
+         max_dataset_size: inf                           
+                    model: cycle_gan                     
+                 n_epochs: 1                             	[default: 100]
+           n_epochs_decay: 0                             	[default: 100]
+               n_layers_D: 3                             
+                     name: maps_cyclegan                 	[default: experiment_name]
+                      ndf: 64                            
+                     netD: basic                         
+                     netG: unet_256                      	[default: resnet_9blocks]
+                      ngf: 64                            
+               no_dropout: True                          
+                  no_flip: False                         
+                  no_html: False                         
+                     norm: instance                      
+              num_threads: 4                             
+                output_nc: 3                             
+                    phase: train                         
+                pool_size: 50                            
+               preprocess: resize_and_crop               
+               print_freq: 100                           
+             save_by_iter: False                         
+          save_epoch_freq: 5                             
+         save_latest_freq: 5000                          
+           serial_batches: False                         
+                   suffix:                               
+         update_html_freq: 1000                          
+                use_wandb: False                         
+                  verbose: False                         
+       wandb_project_name: CycleGAN-and-pix2pix          
+----------------- End -------------------
+dataset [UnalignedDataset] was created
+The number of training images = 1096
+initialize network with normal
+initialize network with normal
+initialize network with normal
+initialize network with normal
+model [CycleGANModel] was created
+---------- Networks initialized -------------
+[Network G_A] Total number of parameters : 54.410 M
+[Network G_B] Total number of parameters : 54.410 M
+[Network D_A] Total number of parameters : 2.765 M
+[Network D_B] Total number of parameters : 2.765 M
+-----------------------------------------------
+learning rate 0.0002000 -> 0.0000000
+End of epoch 1 / 1 	 Time Taken: 29 sec
+-------------------------------------------------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  
+                                                   Name    Self CPU %      Self CPU   CPU total %     CPU total  CPU time avg     Self CUDA   Self CUDA %    CUDA total  CUDA time avg       CPU Mem  Self CPU Mem      CUDA Mem  Self CUDA Mem    # of Calls  
+-------------------------------------------------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  
+                                            aten::empty         0.79%      69.184ms         0.79%      69.184ms       5.132us       0.000us         0.00%       0.000us       0.000us         160 b         160 b     122.77 Gb     122.77 Gb         13480  
+                             aten::convolution_backward         1.89%     166.486ms         5.37%     471.908ms     187.265us        1.371s        36.68%        1.451s     575.989us           0 b           0 b     101.25 Gb      76.07 Gb          2520  
+                                    aten::empty_strided         0.33%      29.037ms         0.33%      29.037ms       5.626us       0.000us         0.00%       0.000us       0.000us           0 b           0 b      67.53 Gb      67.53 Gb          5161  
+                                aten::cudnn_convolution         0.71%      62.426ms         1.27%     111.897ms      71.729us     356.020ms         9.53%     376.301ms     241.218us           0 b           0 b      38.85 Gb      38.85 Gb          1560  
+                              aten::leaky_relu_backward         0.16%      13.714ms         0.35%      31.041ms      23.516us      91.839ms         2.46%      91.839ms      69.575us           0 b           0 b      38.80 Gb      38.80 Gb          1320  
+                                              aten::cat         0.18%      15.461ms         0.26%      23.057ms      26.201us      60.323ms         1.61%      60.467ms      68.712us           0 b           0 b      36.61 Gb      36.61 Gb           880  
+                               aten::threshold_backward         0.12%      10.907ms         0.20%      17.889ms      18.634us      82.674ms         2.21%      82.674ms      86.119us           0 b           0 b      36.05 Gb      36.05 Gb           960  
+                      aten::cudnn_convolution_transpose         0.38%      33.723ms         0.74%      65.283ms      68.003us     325.568ms         8.71%     325.568ms     339.133us           0 b           0 b      19.78 Gb      19.78 Gb           960  
+                                              aten::add         0.12%      10.354ms         0.20%      17.593ms      17.952us      43.563ms         1.17%      43.563ms      44.452us           0 b           0 b      18.02 Gb      18.02 Gb           980  
+                                             aten::tanh         0.02%       2.009ms         0.03%       2.856ms      23.799us       1.406ms         0.04%       1.406ms      11.715us           0 b           0 b       1.80 Gb       1.80 Gb           120  
+                                    aten::tanh_backward         0.02%       1.340ms         0.03%       2.242ms      18.686us       3.550ms         0.09%       3.550ms      29.581us           0 b           0 b       1.77 Gb       1.77 Gb           120  
+                                          aten::resize_         0.01%     483.625us         0.01%     483.625us       2.418us       0.000us         0.00%       0.000us       0.000us           0 b           0 b       1.22 Gb       1.22 Gb           200  
+                                              aten::sub         0.02%       1.363ms         0.02%       2.165ms      27.058us       2.503ms         0.07%       2.503ms      31.288us           0 b           0 b       1.22 Gb       1.22 Gb            80  
+                                              aten::div         0.03%       2.952ms         0.04%       3.796ms      47.445us       1.137ms         0.03%       1.137ms      14.219us           0 b           0 b       1.21 Gb       1.21 Gb            80  
+                                              aten::sgn         0.02%       1.508ms         0.03%       2.199ms      27.493us       1.847ms         0.05%       1.847ms      23.084us           0 b           0 b       1.19 Gb       1.19 Gb            80  
+                                              aten::mul         0.07%       5.740ms         0.11%       9.511ms      23.776us       3.183ms         0.09%       3.183ms       7.957us           0 b           0 b       1.18 Gb       1.18 Gb           400  
+                                     aten::_convolution         0.33%      29.106ms         2.91%     255.334ms     101.323us       0.000us         0.00%     800.071ms     317.488us           0 b           0 b      58.64 Gb      56.00 Mb          2520  
+                                              aten::sum         0.48%      41.939ms         0.91%      80.162ms      34.553us      80.931ms         2.17%      80.931ms      34.884us           0 b           0 b       2.99 Mb       2.99 Mb          2320  
+                                             aten::mean         0.04%       3.785ms         0.07%       5.852ms      29.258us       1.812ms         0.05%       1.812ms       9.058us           0 b           0 b      40.00 Kb      40.00 Kb           200  
+void at::native::vectorized_elementwise_kernel<4, at...         0.00%       0.000us         0.00%       0.000us       0.000us      46.634ms         1.25%      46.634ms      14.127us           0 b           0 b           0 b           0 b          3301  
+void at::native::vectorized_elementwise_kernel<4, at...         0.00%       0.000us         0.00%       0.000us       0.000us      83.441ms         2.23%      83.441ms      85.756us           0 b           0 b           0 b           0 b           973  
+void at::native::elementwise_kernel<128, 2, at::nati...         0.00%       0.000us         0.00%       0.000us       0.000us      31.051ms         0.83%      31.051ms      36.487us           0 b           0 b           0 b           0 b           851  
+void at::native::batch_norm_backward_kernel<float, f...         0.00%       0.000us         0.00%       0.000us       0.000us     165.480ms         4.43%     165.480ms      84.644us           0 b           0 b           0 b           0 b          1955  
+void cudnn::engines_precompiled::nchwToNhwcKernel<fl...         0.00%       0.000us         0.00%       0.000us       0.000us     392.767ms        10.51%     392.767ms      31.202us           0 b           0 b           0 b           0 b         12588  
+                                        Memset (Device)         0.00%       0.000us         0.00%       0.000us       0.000us      10.970ms         0.29%      10.970ms       2.863us           0 b           0 b           0 b           0 b          3832  
+sm80_xmma_fprop_implicit_gemm_tf32f32_tf32f32_f32_nh...         0.00%       0.000us         0.00%       0.000us       0.000us      63.402ms         1.70%      63.402ms     129.392us           0 b           0 b           0 b           0 b           490  
+enumerate(DataLoader)#_MultiProcessingDataLoaderIter...        46.82%        4.116s        46.83%        4.116s     205.799ms       0.000us         0.00%       0.000us       0.000us     600.00 Mb     600.00 Mb           0 b           0 b            20  
+sm80_xmma_wgrad_implicit_gemm_indexed_tf32f32_tf32f3...         0.00%       0.000us         0.00%       0.000us       0.000us      51.702ms         1.38%      51.702ms      60.541us           0 b           0 b           0 b           0 b           854  
+void cudnn::engines_precompiled::nhwcToNchwKernel<fl...         0.00%       0.000us         0.00%       0.000us       0.000us     129.690ms         3.47%     129.690ms      28.249us           0 b           0 b           0 b           0 b          4591  
+void at::native::reduce_kernel<512, 1, at::native::R...         0.00%       0.000us         0.00%       0.000us       0.000us      80.798ms         2.16%      80.798ms      35.974us           0 b           0 b           0 b           0 b          2246  
+sm80_xmma_fprop_implicit_gemm_tf32f32_tf32f32_f32_nh...         0.00%       0.000us         0.00%       0.000us       0.000us      11.046ms         0.30%      11.046ms      30.515us           0 b           0 b           0 b           0 b           362  
+sm80_xmma_dgrad_implicit_gemm_tf32f32_tf32f32_f32_nh...         0.00%       0.000us         0.00%       0.000us       0.000us       8.197ms         0.22%       8.197ms      33.870us           0 b           0 b           0 b           0 b           242  
+void at::native::reduce_kernel<128, 4, at::native::R...         0.00%       0.000us         0.00%       0.000us       0.000us       1.242ms         0.03%       1.242ms      10.176us           0 b           0 b           0 b           0 b           122  
+void at::native::elementwise_kernel<128, 2, at::nati...         0.00%       0.000us         0.00%       0.000us       0.000us     142.107ms         3.80%     142.107ms      41.870us           0 b           0 b           0 b           0 b          3394  
+void at::native::vectorized_elementwise_kernel<4, at...         0.00%       0.000us         0.00%       0.000us       0.000us      13.754ms         0.37%      13.754ms      10.662us           0 b           0 b           0 b           0 b          1290  
+                         Memcpy DtoD (Device -> Device)         0.00%       0.000us         0.00%       0.000us       0.000us     144.067ms         3.86%     144.067ms      29.408us           0 b           0 b           0 b           0 b          4899  
+void at::native::vectorized_elementwise_kernel<4, at...         0.00%       0.000us         0.00%       0.000us       0.000us      94.172ms         2.52%      94.172ms      69.757us           0 b           0 b           0 b           0 b          1350  
+void cutlass__5x_cudnn::Kernel<cutlass_tensorop_s168...         0.00%       0.000us         0.00%       0.000us       0.000us      69.997ms         1.87%      69.997ms     115.126us           0 b           0 b           0 b           0 b           608  
+void cutlass__5x_cudnn::Kernel<cutlass_tensorop_s168...         0.00%       0.000us         0.00%       0.000us       0.000us     270.299ms         7.23%     270.299ms     313.936us           0 b           0 b           0 b           0 b           861  
+void cutlass__5x_cudnn::Kernel<cutlass_tensorop_s168...         0.00%       0.000us         0.00%       0.000us       0.000us      92.829ms         2.48%      92.829ms     253.631us           0 b           0 b           0 b           0 b           366  
+void xmma__5x_cudnn::implicit_gemm::strided_dgrad_in...         0.00%       0.000us         0.00%       0.000us       0.000us       1.199ms         0.03%       1.199ms       3.276us           0 b           0 b           0 b           0 b           366  
+void xmma__5x_cudnn::implicit_gemm::strided_dgrad_in...         0.00%       0.000us         0.00%       0.000us       0.000us       1.424ms         0.04%       1.424ms       3.890us           0 b           0 b           0 b           0 b           366  
+void xmma__5x_cudnn::implicit_gemm::strided_dgrad_in...         0.00%       0.000us         0.00%       0.000us       0.000us       1.368ms         0.04%       1.368ms       3.738us           0 b           0 b           0 b           0 b           366  
+void xmma__5x_cudnn::implicit_gemm::strided_dgrad_in...         0.00%       0.000us         0.00%       0.000us       0.000us       4.303ms         0.12%       4.303ms      11.758us           0 b           0 b           0 b           0 b           366  
+sm80_xmma_dgrad_implicit_gemm_indexed_tf32f32_tf32f3...         0.00%       0.000us         0.00%       0.000us       0.000us      70.409ms         1.88%      70.409ms     286.214us           0 b           0 b           0 b           0 b           246  
+void cudnn::engines_precompiled::scalePackedTensor_k...         0.00%       0.000us         0.00%       0.000us       0.000us       4.333ms         0.12%       4.333ms      21.558us           0 b           0 b           0 b           0 b           201  
+void cudnn::detail::dgrad_engine<float, 128, 6, 8, 3...         0.00%       0.000us         0.00%       0.000us       0.000us      26.722ms         0.72%      26.722ms     329.897us           0 b           0 b           0 b           0 b            81  
+void wgrad_alg0_engine<float, 128, 5, 5, 3, 3, 3, fa...         0.00%       0.000us         0.00%       0.000us       0.000us      53.701ms         1.44%      53.701ms     260.686us           0 b           0 b           0 b           0 b           206  
+void at::native::vectorized_elementwise_kernel<4, at...         0.00%       0.000us         0.00%       0.000us       0.000us       3.580ms         0.10%       3.580ms      29.586us           0 b           0 b           0 b           0 b           121  
+void cask__5x_cudnn::computeOffsetsKernel<false, fal...         0.00%       0.000us         0.00%       0.000us       0.000us     963.602us         0.03%     963.602us       2.640us           0 b           0 b           0 b           0 b           365  
+       _5x_cudnn_ampere_scudnn_128x64_relu_medium_nn_v1         0.00%       0.000us         0.00%       0.000us       0.000us      32.595ms         0.87%      32.595ms     269.377us           0 b           0 b           0 b           0 b           121  
+void wgrad_alg0_engine<float, 128, 6, 7, 3, 3, 5, fa...         0.00%       0.000us         0.00%       0.000us       0.000us      50.870ms         1.36%      50.870ms     420.412us           0 b           0 b           0 b           0 b           121  
+                                               aten::to         0.02%       1.493ms        12.55%        1.103s     672.456us       0.000us         0.00%     289.555ms     176.558us           0 b           0 b     603.92 Mb           0 b          1640  
+                                         aten::_to_copy         0.01%     973.089us        12.53%        1.101s      27.533ms       0.000us         0.00%     289.555ms       7.239ms           0 b           0 b     603.92 Mb           0 b            40  
+                                            aten::copy_         0.33%      29.146ms        13.63%        1.198s     211.600us     460.676ms        12.33%     460.715ms      81.384us           0 b           0 b           0 b           0 b          5661  
+                                        cudaMemcpyAsync        13.03%        1.145s        13.05%        1.147s     237.826us       0.000us         0.00%      39.230us       0.008us           0 b           0 b           0 b           0 b          4821  
+sm80_xmma_fprop_implicit_gemm_tf32f32_tf32f32_f32_nh...         0.00%       0.000us         0.00%       0.000us       0.000us     280.392ms         7.50%     280.392ms     287.581us           0 b           0 b           0 b           0 b           975  
+_ZN17cutlass__5x_cudnn6KernelINS_4conv6kernel23Impli...         0.00%       0.000us         0.00%       0.000us       0.000us      50.275ms         1.35%      50.275ms     415.496us           0 b           0 b           0 b           0 b           121  
+void cutlass__5x_cudnn::Kernel<cutlass__5x_cudnn::re...         0.00%       0.000us         0.00%       0.000us       0.000us       5.659ms         0.15%       5.659ms      17.360us           0 b           0 b           0 b           0 b           326  
+_ZN17cutlass__5x_cudnn6KernelINS_4conv6kernel23Impli...         0.00%       0.000us         0.00%       0.000us       0.000us      45.647ms         1.22%      45.647ms     377.249us           0 b           0 b           0 b           0 b           121  
+void at::native::(anonymous namespace)::multi_tensor...         0.00%       0.000us         0.00%       0.000us       0.000us      21.904ms         0.59%      21.904ms     149.004us           0 b           0 b           0 b           0 b           147  
+void at::native::(anonymous namespace)::multi_tensor...         0.00%       0.000us         0.00%       0.000us       0.000us      15.407ms         0.41%      15.407ms     104.807us           0 b           0 b           0 b           0 b           147  
+void at::native::(anonymous namespace)::multi_tensor...         0.00%       0.000us         0.00%       0.000us       0.000us      22.507ms         0.60%      22.507ms     153.106us           0 b           0 b           0 b           0 b           147  
+void at::native::(anonymous namespace)::multi_tensor...         0.00%       0.000us         0.00%       0.000us       0.000us      15.590ms         0.42%      15.590ms     106.052us           0 b           0 b           0 b           0 b           147  
+void at::native::(anonymous namespace)::multi_tensor...         0.00%       0.000us         0.00%       0.000us       0.000us      15.889ms         0.43%      15.889ms     108.086us           0 b           0 b           0 b           0 b           147  
+void at::native::(anonymous namespace)::multi_tensor...         0.00%       0.000us         0.00%       0.000us       0.000us      15.098ms         0.40%      15.098ms     102.706us           0 b           0 b           0 b           0 b           147  
+void at::native::(anonymous namespace)::multi_tensor...         0.00%       0.000us         0.00%       0.000us       0.000us      29.850ms         0.80%      29.850ms     203.063us           0 b           0 b           0 b           0 b           147  
+void at::native::(anonymous namespace)::CatArrayBatc...         0.00%       0.000us         0.00%       0.000us       0.000us      60.364ms         1.62%      60.364ms      68.440us           0 b           0 b           0 b           0 b           882  
+        _5x_cudnn_ampere_scudnn_128x32_relu_small_nn_v1         0.00%       0.000us         0.00%       0.000us       0.000us      38.977ms         1.04%      38.977ms     159.743us           0 b           0 b           0 b           0 b           244  
+void at::native::vectorized_elementwise_kernel<4, at...         0.00%       0.000us         0.00%       0.000us       0.000us      57.260ms         1.53%      57.260ms      42.859us           0 b           0 b           0 b           0 b          1336  
+void at::native::batch_norm_collect_statistics_kerne...         0.00%       0.000us         0.00%       0.000us       0.000us     164.951ms         4.41%     164.951ms      85.378us           0 b           0 b           0 b           0 b          1932  
+void at::native::vectorized_elementwise_kernel<4, at...         0.00%       0.000us         0.00%       0.000us       0.000us       4.398ms         0.12%       4.398ms       2.276us           0 b           0 b           0 b           0 b          1932  
+void at::native::batch_norm_transform_input_kernel<f...         0.00%       0.000us         0.00%       0.000us       0.000us      64.456ms         1.72%      64.456ms      33.362us           0 b           0 b           0 b           0 b          1932  
+void tensorTransformGeneric<float, float, float, tru...         0.00%       0.000us         0.00%       0.000us       0.000us       4.275ms         0.11%       4.275ms      17.236us           0 b           0 b           0 b           0 b           248  
+void nchwAddPaddingKernel<float, float, float, true,...         0.00%       0.000us         0.00%       0.000us       0.000us     376.407us         0.01%     376.407us       3.036us           0 b           0 b           0 b           0 b           124  
+void at::native::elementwise_kernel<128, 2, at::nati...         0.00%       0.000us         0.00%       0.000us       0.000us     374.329us         0.01%     374.329us       3.019us           0 b           0 b           0 b           0 b           124  
+void at::native::reduce_kernel<512, 1, at::native::R...         0.00%       0.000us         0.00%       0.000us       0.000us       1.729ms         0.05%       1.729ms       8.477us           0 b           0 b           0 b           0 b           204  
+void at::native::vectorized_elementwise_kernel<4, at...         0.00%       0.000us         0.00%       0.000us       0.000us     721.462us         0.02%     721.462us       2.227us           0 b           0 b           0 b           0 b           324  
+void at::native::elementwise_kernel<128, 2, at::nati...         0.00%       0.000us         0.00%       0.000us       0.000us     452.249us         0.01%     452.249us       3.647us           0 b           0 b           0 b           0 b           124  
+void cutlass__5x_cudnn::Kernel<cutlass_tensorop_s168...         0.00%       0.000us         0.00%       0.000us       0.000us      79.839ms         2.14%      79.839ms     321.931us           0 b           0 b           0 b           0 b           248  
+_ZN17cutlass__5x_cudnn6KernelINS_4conv6kernel23Impli...         0.00%       0.000us         0.00%       0.000us       0.000us      23.408ms         0.63%      23.408ms     278.671us           0 b           0 b           0 b           0 b            84  
+                                          ProfilerStep*         0.00%       0.000us         0.00%       0.000us       0.000us        3.555s        95.13%        3.555s     177.729ms           0 b           0 b           0 b           0 b            20  
+                       Memcpy HtoD (Pageable -> Device)         0.00%       0.000us         0.00%       0.000us       0.000us     289.555ms         7.75%     289.555ms       7.239ms           0 b           0 b           0 b           0 b            40  
+                                  cudaStreamSynchronize         0.16%      14.421ms         0.16%      14.421ms     360.532us       0.000us         0.00%       0.000us       0.000us           0 b           0 b           0 b           0 b            40  
+                                                Scatter         0.16%      13.894ms         0.23%      20.009ms      83.372us       0.000us         0.00%       0.000us       0.000us           0 b           0 b           0 b           0 b           240  
+                                            aten::chunk         0.01%     867.692us         0.07%       6.115ms      25.480us       0.000us         0.00%       0.000us       0.000us           0 b           0 b           0 b           0 b           240  
+                                            aten::split         0.02%       1.810ms         0.06%       5.247ms      21.864us       0.000us         0.00%       0.000us       0.000us           0 b           0 b           0 b           0 b           240  
+                                           aten::narrow         0.06%       4.861ms         0.17%      15.038ms       7.832us       0.000us         0.00%       0.000us       0.000us           0 b           0 b           0 b           0 b          1920  
+                                            aten::slice         0.09%       8.097ms         0.12%      10.177ms       5.300us       0.000us         0.00%       0.000us       0.000us           0 b           0 b           0 b           0 b          1920  
+                                       aten::as_strided         0.17%      14.997ms         0.17%      14.997ms       1.569us       0.000us         0.00%       0.000us       0.000us           0 b           0 b           0 b           0 b          9560  
+                                           aten::conv2d         0.06%       5.340ms         2.06%     181.186ms     116.145us       0.000us         0.00%     441.342ms     282.911us           0 b           0 b      38.85 Gb           0 b          1560  
+                                      aten::convolution         0.25%      22.321ms         3.16%     277.654ms     110.180us       0.000us         0.00%     800.071ms     317.488us           0 b           0 b      58.64 Gb           0 b          2520  
+                                        cudaEventRecord         0.14%      12.638ms         0.14%      12.638ms       1.755us       0.000us         0.00%       0.000us       0.000us           0 b           0 b           0 b           0 b          7200  
+                                  cudaStreamIsCapturing         0.04%       3.216ms         0.04%       3.216ms       0.444us       0.000us         0.00%       0.000us       0.000us           0 b           0 b           0 b           0 b          7240  
+                                  cudaStreamGetPriority         0.03%       2.636ms         0.03%       2.636ms       0.366us       0.000us         0.00%       0.000us       0.000us           0 b           0 b           0 b           0 b          7200  
+                       cudaDeviceGetStreamPriorityRange         0.03%       2.482ms         0.03%       2.482ms       0.345us       0.000us         0.00%       0.000us       0.000us           0 b           0 b           0 b           0 b          7200  
+                                       cudaLaunchKernel         5.04%     442.984ms         5.41%     475.616ms       9.585us       0.000us         0.00%     268.493ms       5.411us           0 b           0 b           0 b           0 b         49620  
+                                   DataParallel.forward         0.00%       0.000us         0.00%       0.000us       0.000us        1.214s        32.49%        1.214s       5.058ms           0 b           0 b           0 b           0 b           240  
+                                    cudaPeekAtLastError         0.03%       2.218ms         0.03%       2.218ms       0.166us       0.000us         0.00%       0.000us       0.000us           0 b           0 b           0 b           0 b         13360  
+                                        cudaMemsetAsync         0.41%      35.800ms         0.41%      35.870ms       8.706us       0.000us         0.00%     536.601us       0.130us           0 b           0 b           0 b           0 b          4120  
+-------------------------------------------------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  ------------  
+Self CPU time total: 8.789s
+Self CUDA time total: 3.737s
+
+/var/spool/slurmd/job11611718/slurm_script: line 21: --no_html: command not found
