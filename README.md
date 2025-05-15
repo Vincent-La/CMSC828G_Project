@@ -1,10 +1,13 @@
 # Cycling Faster Through CycleGAN
 
-+ **Final report PDF: [Cycling_Faster_Through_CycleGAN.pdf](Cycling_Faster_Through_CycleGAN.pdf)**
 + Original [README](original_README.md)
 + Dataset path (scratch space): `/scratch/zt1/project/cmsc828/shared/cgan_perf/datasets/maps`
 
 Note: Zaratan `shell` space is not accesible by compute nodes
+
+## Final Report PDF
+[Cycling_Faster_Through_CycleGAN.pdf](Cycling_Faster_Through_CycleGAN.pdf)
+
 
 ## profile.py
 Profling script for baseline setup. Adapted `train.py` code to profile CycleGAN
