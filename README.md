@@ -8,7 +8,6 @@ Note: Zaratan `shell` space is not accesible by compute nodes
 ## Final Report PDF
 [Cycling_Faster_Through_CycleGAN.pdf](Cycling_Faster_Through_CycleGAN.pdf)
 
-
 ## profile.py
 Profling script for baseline setup. Adapted `train.py` code to profile CycleGAN
 
